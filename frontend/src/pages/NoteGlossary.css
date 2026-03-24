@@ -1,0 +1,89 @@
+.notes-page {
+  padding: 8rem 0 6rem;
+}
+
+.notes-header {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 3.5rem;
+}
+
+.notes-header h1 {
+  font-size: 2.8rem;
+  margin-bottom: 0.6rem;
+}
+
+.notes-category-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: 3rem;
+}
+
+.notes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.6rem;
+}
+
+.note-glossary-card {
+  background: var(--bg-surface);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  padding: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all var(--transition-normal);
+}
+
+.note-glossary-card:hover {
+  border-color: var(--gold-primary);
+  transform: translateY(-3px);
+  background: rgba(212, 175, 55, 0.04);
+}
+
+.note-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.8rem;
+}
+
+.note-card-category {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--gold-primary);
+  font-weight: 600;
+}
+
+.note-card-count {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.note-glossary-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.6rem;
+  color: #fff;
+}
+
+.note-glossary-card p {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1.4rem;
+}
+
+.btn-note-explore {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--gold-light);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
