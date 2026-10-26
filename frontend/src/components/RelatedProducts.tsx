@@ -9,17 +9,16 @@ interface RelatedProductsProps {
   currentProductId: string;
 }
 
-const RelatedProducts = ({ category, currentProductId }: RelatedProductsProps) => {
+export const RelatedProducts = ({ category, currentProductId }: RelatedProductsProps) => {
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
     const loadRelated = async () => {
       try {
-        const response = await fetchProducts(category);
-        if (response.success) {
-          // Filter out the current product and limit to 4
+        const response = await fetchProducts({ family: category });
+        if (response.success && response.data) {
           const filtered = response.data
-            .filter(p => p._id !== currentProductId)
+            .filter(p => (p.id || p._id) !== currentProductId)
             .slice(0, 4);
           setProducts(filtered);
         }
@@ -34,10 +33,10 @@ const RelatedProducts = ({ category, currentProductId }: RelatedProductsProps) =
 
   return (
     <div className="related-products">
-      <h3>You May Also Like</h3>
+      <h3>Harmonic Kinship</h3>
       <div className="related-grid">
         {products.map(p => (
-          <ProductCard key={p._id} product={p} />
+          <ProductCard key={p.id || p._id} product={p} />
         ))}
       </div>
     </div>

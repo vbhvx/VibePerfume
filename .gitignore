@@ -1,7 +1,8 @@
-cat > .gitignore << 'EOF'
 node_modules/
+.npm_cache/
 .env
+.env.local
 dist/
 build/
 .DS_Store
-EOF
+*.log

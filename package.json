@@ -1,0 +1,27 @@
+{
+  "name": "vibe-perfume",
+  "version": "2.0.0",
+  "description": "Vibe Perfume - Premium Fragrance E-Commerce and Scent Discovery Platform",
+  "private": true,
+  "scripts": {
+    "dev:backend": "npm run start --prefix backend",
+    "dev:frontend": "npm run dev --prefix frontend",
+    "dev": "node -e \"const { spawn } = require('child_process'); spawn('npm', ['run', 'start', '--prefix', 'backend'], { stdio: 'inherit', shell: true }); spawn('npm', ['run', 'dev', '--prefix', 'frontend'], { stdio: 'inherit', shell: true });\"",
+    "build": "npm run build --prefix frontend",
+    "test": "npm test --prefix backend && npm test --prefix frontend",
+    "test:backend": "npm test --prefix backend",
+    "test:frontend": "npm test --prefix frontend"
+  },
+  "keywords": [
+    "perfume",
+    "fragrance",
+    "discovery",
+    "ecommerce",
+    "react",
+    "vite",
+    "node",
+    "luxury"
+  ],
+  "author": "Vibe Perfume Atelier",
+  "license": "MIT"
+}

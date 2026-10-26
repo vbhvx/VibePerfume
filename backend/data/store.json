@@ -1,0 +1,1403 @@
+{
+  "brands": [
+    {
+      "id": "brand-maison-luxe",
+      "name": "Maison Luxe",
+      "slug": "maison-luxe",
+      "origin": "Grasse, France",
+      "foundedYear": 1984,
+      "description": "Haute parfumerie crafted with rare botanicals and traditional Grasse distillation methods.",
+      "status": "active"
+    },
+    {
+      "id": "brand-lumiere",
+      "name": "Lumière Fragrances",
+      "slug": "lumiere-fragrances",
+      "origin": "Florence, Italy",
+      "foundedYear": 2002,
+      "description": "Modern luminous florals inspired by Tuscan gardens and Italian sunlight.",
+      "status": "active"
+    },
+    {
+      "id": "brand-riviera",
+      "name": "Riviera Essence",
+      "slug": "riviera-essence",
+      "origin": "Nice, France",
+      "foundedYear": 2011,
+      "description": "Vibrant Mediterranean citrus and herbal blends crafted with sun-drenched coastal zest.",
+      "status": "active"
+    },
+    {
+      "id": "brand-desert-gold",
+      "name": "Desert Gold",
+      "slug": "desert-gold",
+      "origin": "Dubai, UAE",
+      "foundedYear": 2015,
+      "description": "Luxurious oriental fragrances celebrating Cambodian agarwood, rare saffron, and rich resins.",
+      "status": "active"
+    },
+    {
+      "id": "brand-oceanic",
+      "name": "Oceanic Air",
+      "slug": "oceanic-air",
+      "origin": "Sydney, Australia",
+      "foundedYear": 2018,
+      "description": "Invigorating marine and mineral fragrances inspired by wild ocean coastlines and sea spray.",
+      "status": "active"
+    },
+    {
+      "id": "brand-atelier-botanique",
+      "name": "Atelier Botanique",
+      "slug": "atelier-botanique",
+      "origin": "Kyoto, Japan",
+      "foundedYear": 2016,
+      "description": "Minimalist, meditative woods and delicate incense balancing Japanese hinoki and Australian sandalwood.",
+      "status": "active"
+    },
+    {
+      "id": "brand-parfums-dor",
+      "name": "Parfums d'Or",
+      "slug": "parfums-dor",
+      "origin": "Paris, France",
+      "foundedYear": 1998,
+      "description": "Decadent gourmands and comforting warm ambers crafted with Madagascar vanilla bean.",
+      "status": "active"
+    },
+    {
+      "id": "brand-royal-scent",
+      "name": "Royal Scent Co.",
+      "slug": "royal-scent-co",
+      "origin": "London, United Kingdom",
+      "foundedYear": 1976,
+      "description": "Distinguished British perfumery marrying aromatic spices, heritage woods, and rich leather notes.",
+      "status": "active"
+    }
+  ],
+  "fragranceFamilies": [
+    {
+      "id": "woody",
+      "name": "Woody",
+      "description": "Warm, opulent, and earthy scents featuring sandalwood, cedarwood, vetiver, and oud."
+    },
+    {
+      "id": "floral",
+      "name": "Floral",
+      "description": "Romantic, blooming accords centered on rose, jasmine, tuberose, and delicate petals."
+    },
+    {
+      "id": "citrus",
+      "name": "Citrus",
+      "description": "Effervescent, sparkling bursts of bergamot, Sicilian lemon, grapefruit, and mandarin."
+    },
+    {
+      "id": "oriental",
+      "name": "Oriental",
+      "description": "Sensual, exotic harmonies of amber, vanilla, rare resins, and precious spices."
+    },
+    {
+      "id": "fresh",
+      "name": "Fresh",
+      "description": "Crisp, airy, and rejuvenating profiles evoking morning dew, clean linen, and green leaves."
+    },
+    {
+      "id": "aquatic",
+      "name": "Aquatic",
+      "description": "Cool ocean breezes, salty sea spray, and mineral coastlines with refreshing vitality."
+    },
+    {
+      "id": "gourmand",
+      "name": "Gourmand",
+      "description": "Indulgent, mouth-watering notes of bourbon vanilla, roasted almond, tonka bean, and caramel."
+    },
+    {
+      "id": "spicy",
+      "name": "Spicy",
+      "description": "Piquant, invigorating accents of pink pepper, nutmeg, cardamom, and clove."
+    }
+  ],
+  "noteGlossary": [
+    {
+      "name": "Calabrian Bergamot",
+      "category": "Citrus",
+      "description": "Crisp, sun-drenched citrus brightness with a subtle peppery, aromatic nuance."
+    },
+    {
+      "name": "Black Pepper",
+      "category": "Spice",
+      "description": "Sharp, energetic culinary spice providing immediate warmth and vibrancy."
+    },
+    {
+      "name": "Cambodian Oud",
+      "category": "Wood",
+      "description": "Rare, aged agarwood heartwood with smoky, resinous balsamic depth."
+    },
+    {
+      "name": "Damascena Rose",
+      "category": "Floral",
+      "description": "The queen of roses; velvety, dewy, and honeyed with profound elegance."
+    },
+    {
+      "name": "Amber",
+      "category": "Amber",
+      "description": "Luminous, golden fossilized resin delivering warmth, sweetness, and lingering comfort."
+    },
+    {
+      "name": "Mysore Sandalwood",
+      "category": "Wood",
+      "description": "Renowned milky, creamy wood that melds seamlessly with skin."
+    },
+    {
+      "name": "Velvet Musk",
+      "category": "Musk",
+      "description": "Soft, skin-like sensuality that amplifies projection and longevity."
+    },
+    {
+      "name": "Bulgarian Rose",
+      "category": "Floral",
+      "description": "Fresh, crystalline morning rose petals kissed by alpine dew."
+    },
+    {
+      "name": "Sambac Jasmine",
+      "category": "Floral",
+      "description": "Intoxicating, night-blooming white floral with exotic narcotic sweetness."
+    },
+    {
+      "name": "Bourbon Vanilla",
+      "category": "Gourmand",
+      "description": "Rich, boozy vanilla extract from Madagascar with balsamic facets."
+    },
+    {
+      "name": "Sicilian Lemon",
+      "category": "Citrus",
+      "description": "Pure, radiant citrus juice offering immediate clarity and uplifting mood."
+    },
+    {
+      "name": "Grapefruit",
+      "category": "Citrus",
+      "description": "Bittersweet, sparkling citrus giving a modern tart effervescence."
+    },
+    {
+      "name": "Aromatic Basil",
+      "category": "Fresh",
+      "description": "Herbaceous green accord that brings a peppery, garden-fresh zest."
+    },
+    {
+      "name": "Virginian Cedarwood",
+      "category": "Wood",
+      "description": "Dry, noble pencil-shaving cedar delivering structured masculine elegance."
+    },
+    {
+      "name": "Precious Saffron",
+      "category": "Spice",
+      "description": "The golden spice; leathery, bittersweet, and profoundly opulent."
+    },
+    {
+      "name": "Green Cardamom",
+      "category": "Spice",
+      "description": "Cool spicy pod offering resinous, eucalyptus-like freshness."
+    },
+    {
+      "name": "Indonesian Patchouli",
+      "category": "Wood",
+      "description": "Deep, earthy, dark leaf that anchors warm compositions."
+    },
+    {
+      "name": "Ambergris",
+      "category": "Amber",
+      "description": "Marine, salty animalic sweetness that enhances sillage and skin presence."
+    },
+    {
+      "name": "Sea Salt",
+      "category": "Aquatic",
+      "description": "Crystalline saline note evoking foaming waves crashing against coastal rocks."
+    },
+    {
+      "name": "Coastal Sage",
+      "category": "Fresh",
+      "description": "Aromatic herbal coastal bush that balances crisp sea air."
+    },
+    {
+      "name": "Ambrette Seeds",
+      "category": "Musk",
+      "description": "Natural plant-derived botanical musk with delicate pear and floral undertones."
+    },
+    {
+      "name": "Sun-bleached Driftwood",
+      "category": "Wood",
+      "description": "Salty, sun-baked weathered wood washed ashore on quiet beaches."
+    },
+    {
+      "name": "Violet Leaf",
+      "category": "Fresh",
+      "description": "Crisp, watery green ozone note reminiscent of freshly clipped garden stems."
+    },
+    {
+      "name": "Florentine Iris",
+      "category": "Floral",
+      "description": "Powdery, noble orris root with buttery, suede-like sophistication."
+    },
+    {
+      "name": "Cashmere Wood",
+      "category": "Wood",
+      "description": "Plush, enveloping synthetic accord combining cedar, amber, and musk."
+    },
+    {
+      "name": "Bitter Almond",
+      "category": "Gourmand",
+      "description": "Nutty, cherry-marzipan nuance that adds intoxicating complexity."
+    },
+    {
+      "name": "Tonka Bean",
+      "category": "Gourmand",
+      "description": "Warm coumarin facet featuring roasted almond, hay, and vanilla warmth."
+    },
+    {
+      "name": "Pink Pepper",
+      "category": "Spice",
+      "description": "Rosy, sparkling berries that provide an effervescent dry spice tickle."
+    },
+    {
+      "name": "Smoked Vetiver",
+      "category": "Wood",
+      "description": "Earthy grass root with flinty, smoky mineral undertones."
+    },
+    {
+      "name": "Cured Tobacco Leaf",
+      "category": "Spicy",
+      "description": "Rich, sweet cured pipe tobacco evoking leather armchairs and warm libraries."
+    }
+  ],
+  "products": [
+    {
+      "id": "prod-1",
+      "brandId": "brand-maison-luxe",
+      "brandName": "Maison Luxe",
+      "name": "Noir Absolu",
+      "slug": "noir-absolu",
+      "shortDescription": "An intoxicating, velvety oud interwoven with smoky incense and rare golden amber.",
+      "description": "Noir Absolu is an opulent woody-oriental fragrance that opens with spicy bursts of Calabrian bergamot and cracked black pepper, gradually revealing a hypnotic heart of Cambodian oud and crimson damascena rose. The drydown settles into a warm, persistent embrace of amber resin, velvet musk, and aged Mysore sandalwood.",
+      "fragranceFamily": "Woody",
+      "secondaryFamilies": [
+        "Oriental",
+        "Spicy"
+      ],
+      "genderPresentation": "Unisex",
+      "launchYear": 2021,
+      "perfumer": "Antoine Maisondieu",
+      "intensity": "Intense",
+      "longevity": "10-12 Hours",
+      "sillage": "Enormous",
+      "characterDescriptors": [
+        "Smoky",
+        "Woody",
+        "Warm",
+        "Resinous",
+        "Sensual"
+      ],
+      "occasions": [
+        "Evening",
+        "Special Occasion",
+        "Winter Gala",
+        "Formal Dinner"
+      ],
+      "seasons": [
+        "Autumn",
+        "Winter"
+      ],
+      "productStatus": "active",
+      "mainImageUrl": "/images/perfumes/noir-absolu-main.jpg",
+      "galleryImages": [
+        "/images/perfumes/noir-absolu-main.jpg",
+        "/images/perfumes/noir-absolu-1.jpg",
+        "/images/perfumes/noir-absolu-2.jpg"
+      ],
+      "notes": {
+        "top": [
+          {
+            "name": "Calabrian Bergamot",
+            "category": "Citrus",
+            "description": "Sun-drenched citrus brightness with peppery warmth."
+          },
+          {
+            "name": "Black Pepper",
+            "category": "Spice",
+            "description": "Sharp, energetic spice providing immediate opening presence."
+          }
+        ],
+        "heart": [
+          {
+            "name": "Cambodian Oud",
+            "category": "Wood",
+            "description": "Smoky, resinous balsamic heart of aged agarwood."
+          },
+          {
+            "name": "Damascena Rose",
+            "category": "Floral",
+            "description": "Dewy, honeyed floral richness that balances the smoke."
+          }
+        ],
+        "base": [
+          {
+            "name": "Amber",
+            "category": "Amber",
+            "description": "Golden radiant resin delivering deep warmth."
+          },
+          {
+            "name": "Mysore Sandalwood",
+            "category": "Wood",
+            "description": "Creamy, smooth milky wood that clings to skin for hours."
+          },
+          {
+            "name": "Velvet Musk",
+            "category": "Musk",
+            "description": "Soft skin-like projection and exceptional longevity."
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "var-1-30",
+          "sku": "NA-30-EDP",
+          "sizeMl": 30,
+          "concentration": "Eau de Parfum",
+          "packagingType": "Atelier Flacon",
+          "price": 2490,
+          "compareAtPrice": 2890,
+          "stockQuantity": 14,
+          "status": "in_stock"
+        },
+        {
+          "id": "var-1-50",
+          "sku": "NA-50-EDP",
+          "sizeMl": 50,
+          "concentration": "Eau de Parfum",
+          "packagingType": "Atelier Flacon",
+          "price": 3490,
+          "compareAtPrice": 3990,
+          "stockQuantity": 22,
+          "status": "in_stock"
+        },
+        {
+          "id": "var-1-100",
+          "sku": "NA-100-EDP",
+          "sizeMl": 100,
+          "concentration": "Eau de Parfum",
+          "packagingType": "Atelier Flacon",
+          "price": 5490,
+          "compareAtPrice": 6290,
+          "stockQuantity": 8,
+          "status": "in_stock"
+        }
+      ],
+      "defaultVariantId": "var-1-50",
+      "rating": 4.9,
+      "reviewCount": 38
+    },
+    {
+      "id": "prod-2",
+      "brandId": "brand-lumiere",
+      "brandName": "Lumière Fragrances",
+      "name": "Rose Éclat",
+      "slug": "rose-eclat",
+      "shortDescription": "A radiant, dew-kissed rose bouquet with creamy jasmine and Bourbon vanilla.",
+      "description": "Rose Éclat captures the pure euphoria of a secluded Tuscan botanical garden at sunrise. It opens with crystalline Sicilian lemon and dewy green pear, cascading into an opulent heart of hand-harvested Bulgarian rose and Sambac jasmine petals. The composition concludes with warm Madagascar vanilla and velvet white musk.",
+      "fragranceFamily": "Floral",
+      "secondaryFamilies": [
+        "Fresh",
+        "Gourmand"
+      ],
+      "genderPresentation": "Feminine",
+      "launchYear": 2022,
+      "perfumer": "Honorine Blanc",
+      "intensity": "Moderate",
+      "longevity": "8-10 Hours",
+      "sillage": "Moderate",
+      "characterDescriptors": [
+        "Romantic",
+        "Floral",
+        "Luminous",
+        "Sweet",
+        "Velvety"
+      ],
+      "occasions": [
+        "Daytime",
+        "Date Night",
+        "Spring Wedding",
+        "Afternoon Tea"
+      ],
+      "seasons": [
+        "Spring",
+        "Summer",
+        "All-Season"
+      ],
+      "productStatus": "active",
+      "mainImageUrl": "/images/perfumes/rose-eclat-main.jpg",
+      "galleryImages": [
+        "/images/perfumes/rose-eclat-main.jpg",
+        "/images/perfumes/rose-eclat-1.jpg",
+        "/images/perfumes/rose-eclat-2.jpg"
+      ],
+      "notes": {
+        "top": [
+          {
+            "name": "Sicilian Lemon",
+            "category": "Citrus",
+            "description": "Sparkling morning citrus with a clean, dewy sparkle."
+          },
+          {
+            "name": "Violet Leaf",
+            "category": "Fresh",
+            "description": "Watery green ozone reminiscent of freshly cut stems."
+          }
+        ],
+        "heart": [
+          {
+            "name": "Bulgarian Rose",
+            "category": "Floral",
+            "description": "Luminous, honeyed floral core harvested at dawn."
+          },
+          {
+            "name": "Sambac Jasmine",
+            "category": "Floral",
+            "description": "Intoxicating white petal warmth with narcotic sweetness."
+          }
+        ],
+        "base": [
+          {
+            "name": "Bourbon Vanilla",
+            "category": "Gourmand",
+            "description": "Velvety, gourmand warmth that lingers gently."
+          },
+          {
+            "name": "Velvet Musk",
+            "category": "Musk",
+            "description": "Clean, sensual second-skin warmth."
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "var-2-50",
+          "sku": "RE-50-EDP",
+          "sizeMl": 50,
+          "concentration": "Eau de Parfum",
+          "packagingType": "Glass Flacon",
+          "price": 2990,
+          "compareAtPrice": 3400,
+          "stockQuantity": 18,
+          "status": "in_stock"
+        },
+        {
+          "id": "var-2-100",
+          "sku": "RE-100-EDP",
+          "sizeMl": 100,
+          "concentration": "Eau de Parfum",
+          "packagingType": "Glass Flacon",
+          "price": 4690,
+          "compareAtPrice": 5200,
+          "stockQuantity": 11,
+          "status": "in_stock"
+        }
+      ],
+      "defaultVariantId": "var-2-50",
+      "rating": 4.8,
+      "reviewCount": 29
+    },
+    {
+      "id": "prod-3",
+      "brandId": "brand-riviera",
+      "brandName": "Riviera Essence",
+      "name": "Citrus Verve",
+      "slug": "citrus-verve",
+      "shortDescription": "An electrifying cocktail of Mediterranean lemon, zesty grapefruit, and basil.",
+      "description": "Inspired by the cliffside lemon groves of Amalfi and the sparkling blue of the Côte d'Azur, Citrus Verve is an invigorating tonic for the senses. A brilliant burst of cold-pressed Sicilian lemon and pink grapefruit merges into crushed aromatic basil, resting upon a clean foundation of Virginian cedarwood and vetiver.",
+      "fragranceFamily": "Citrus",
+      "secondaryFamilies": [
+        "Fresh",
+        "Woody"
+      ],
+      "genderPresentation": "Unisex",
+      "launchYear": 2020,
+      "perfumer": "Jean-Claude Ellena",
+      "intensity": "Moderate",
+      "longevity": "6-8 Hours",
+      "sillage": "Moderate",
+      "characterDescriptors": [
+        "Crisp",
+        "Citrusy",
+        "Energizing",
+        "Clean",
+        "Refreshing"
+      ],
+      "occasions": [
+        "Daily Wear",
+        "Office",
+        "Weekend Brunch",
+        "Summer Vacation"
+      ],
+      "seasons": [
+        "Spring",
+        "Summer"
+      ],
+      "productStatus": "active",
+      "mainImageUrl": "/images/perfumes/citrus-verve-main.jpg",
+      "galleryImages": [
+        "/images/perfumes/citrus-verve-main.jpg",
+        "/images/perfumes/citrus-verve-1.jpg",
+        "/images/perfumes/citrus-verve-2.jpg"
+      ],
+      "notes": {
+        "top": [
+          {
+            "name": "Sicilian Lemon",
+            "category": "Citrus",
+            "description": "Cold-pressed lemon zest delivering instant effervescence."
+          },
+          {
+            "name": "Grapefruit",
+            "category": "Citrus",
+            "description": "Tart, slightly bitter pink citrus note."
+          }
+        ],
+        "heart": [
+          {
+            "name": "Aromatic Basil",
+            "category": "Fresh",
+            "description": "Freshly torn green leaves with herbal spice."
+          },
+          {
+            "name": "Pink Pepper",
+            "category": "Spice",
+            "description": "Brisk, sparkling warmth that elevates the citrus."
+          }
+        ],
+        "base": [
+          {
+            "name": "Virginian Cedarwood",
+            "category": "Wood",
+            "description": "Clean, dry structured wood keeping the scent grounded."
+          },
+          {
+            "name": "Smoked Vetiver",
+            "category": "Wood",
+            "description": "Earthy root freshness for modern tenacity."
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "var-3-30",
+          "sku": "CV-30-EDT",
+          "sizeMl": 30,
+          "concentration": "Eau de Toilette",
+          "packagingType": "Travel Spray",
+          "price": 1890,
+          "compareAtPrice": 2200,
+          "stockQuantity": 25,
+          "status": "in_stock"
+        },
+        {
+          "id": "var-3-50",
+          "sku": "CV-50-EDP",
+          "sizeMl": 50,
+          "concentration": "Eau de Parfum",
+          "packagingType": "Glass Flacon",
+          "price": 2690,
+          "compareAtPrice": 3100,
+          "stockQuantity": 19,
+          "status": "in_stock"
+        },
+        {
+          "id": "var-3-100",
+          "sku": "CV-100-EDP",
+          "sizeMl": 100,
+          "concentration": "Eau de Parfum",
+          "packagingType": "Glass Flacon",
+          "price": 3990,
+          "compareAtPrice": 4600,
+          "stockQuantity": 12,
+          "status": "in_stock"
+        }
+      ],
+      "defaultVariantId": "var-3-50",
+      "rating": 4.7,
+      "reviewCount": 32
+    },
+    {
+      "id": "prod-4",
+      "brandId": "brand-desert-gold",
+      "brandName": "Desert Gold",
+      "name": "Oud Mystique",
+      "slug": "oud-mystique",
+      "shortDescription": "An exotic oriental triumph of rare saffron, royal Cambodian oud, and spiced patchouli.",
+      "description": "Oud Mystique transports the senses to starlit Arabian dunes. Opening with glowing threads of Persian saffron and crushed green cardamom pods, it leads into a decadent heart of aged Cambodian agarwood and warm Ceylon cinnamon. The drydown reveals dark Indonesian patchouli and salty ambergris for legendary longevity.",
+      "fragranceFamily": "Oriental",
+      "secondaryFamilies": [
+        "Woody",
+        "Spicy"
+      ],
+      "genderPresentation": "Unisex",
+      "launchYear": 2019,
+      "perfumer": "Alberto Morillas",
+      "intensity": "Very Intense",
+      "longevity": "12+ Hours",
+      "sillage": "Enormous",
+      "characterDescriptors": [
+        "Exotic",
+        "Resinous",
+        "Warm",
+        "Spicy",
+        "Opulent"
+      ],
+      "occasions": [
+        "Gala Nights",
+        "Winter Celebrations",
+        "Special Occasions",
+        "Late Night"
+      ],
+      "seasons": [
+        "Autumn",
+        "Winter"
+      ],
+      "productStatus": "active",
+      "mainImageUrl": "/images/perfumes/oud-mystique-main.jpg",
+      "galleryImages": [
+        "/images/perfumes/oud-mystique-main.jpg",
+        "/images/perfumes/oud-mystique-1.jpg",
+        "/images/perfumes/oud-mystique-2.jpg"
+      ],
+      "notes": {
+        "top": [
+          {
+            "name": "Precious Saffron",
+            "category": "Spice",
+            "description": "Leathery, bittersweet regal spice of incomparable luxury."
+          },
+          {
+            "name": "Green Cardamom",
+            "category": "Spice",
+            "description": "Cool aromatic spice with resinous citrus nuances."
+          }
+        ],
+        "heart": [
+          {
+            "name": "Cambodian Oud",
+            "category": "Wood",
+            "description": "Smoky, deep agarwood that crowns the fragrance."
+          },
+          {
+            "name": "Damascena Rose",
+            "category": "Floral",
+            "description": "Velvet petal softness framing the intense woods."
+          }
+        ],
+        "base": [
+          {
+            "name": "Indonesian Patchouli",
+            "category": "Wood",
+            "description": "Dark, earthy herbal base creating magnetic sillage."
+          },
+          {
+            "name": "Ambergris",
+            "category": "Amber",
+            "description": "Saline warmth magnifying projection for 12+ hours."
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "var-4-50",
+          "sku": "OM-50-EXTRAIT",
+          "sizeMl": 50,
+          "concentration": "Extrait de Parfum",
+          "packagingType": "Heavy Crystal Flacon",
+          "price": 4990,
+          "compareAtPrice": 5800,
+          "stockQuantity": 12,
+          "status": "in_stock"
+        },
+        {
+          "id": "var-4-100",
+          "sku": "OM-100-EXTRAIT",
+          "sizeMl": 100,
+          "concentration": "Extrait de Parfum",
+          "packagingType": "Heavy Crystal Flacon",
+          "price": 7490,
+          "compareAtPrice": 8500,
+          "stockQuantity": 5,
+          "status": "low_stock"
+        }
+      ],
+      "defaultVariantId": "var-4-50",
+      "rating": 5,
+      "reviewCount": 44
+    },
+    {
+      "id": "prod-5",
+      "brandId": "brand-oceanic",
+      "brandName": "Oceanic Air",
+      "name": "Aqua Fresh",
+      "slug": "aqua-fresh",
+      "shortDescription": "A bracing marine breath of wild sea salt, coastal sage, and sun-drenched driftwood.",
+      "description": "Aqua Fresh channels the untamed power of the Pacific coast. Crisp marine mist and crystalline sea salt mingle with sun-warmed coastal sage. As the scent unfolds on skin, ambrette seed botanicals and weathered driftwood create a lingering, clean scent reminiscent of ocean breezes on warm skin.",
+      "fragranceFamily": "Aquatic",
+      "secondaryFamilies": [
+        "Fresh",
+        "Woody"
+      ],
+      "genderPresentation": "Unisex",
+      "launchYear": 2022,
+      "perfumer": "Christine Nagel",
+      "intensity": "Moderate",
+      "longevity": "7-9 Hours",
+      "sillage": "Moderate",
+      "characterDescriptors": [
+        "Marine",
+        "Saline",
+        "Breezy",
+        "Mineral",
+        "Clean"
+      ],
+      "occasions": [
+        "Daily Wear",
+        "Summer Escapes",
+        "Gym & Active",
+        "Office"
+      ],
+      "seasons": [
+        "Spring",
+        "Summer"
+      ],
+      "productStatus": "active",
+      "mainImageUrl": "/images/perfumes/marine-royale-main.jpg",
+      "galleryImages": [
+        "/images/perfumes/marine-royale-main.jpg",
+        "/images/perfumes/marine-royale-1.jpg",
+        "/images/perfumes/marine-royale-2.jpg"
+      ],
+      "notes": {
+        "top": [
+          {
+            "name": "Sea Salt",
+            "category": "Aquatic",
+            "description": "Crisp, airy saline crystals evoking breaking ocean waves."
+          },
+          {
+            "name": "Calabrian Bergamot",
+            "category": "Citrus",
+            "description": "Zesty sunny citrus opening with pure clarity."
+          }
+        ],
+        "heart": [
+          {
+            "name": "Coastal Sage",
+            "category": "Fresh",
+            "description": "Wild aromatic coastal scrub washed by sea spray."
+          },
+          {
+            "name": "Violet Leaf",
+            "category": "Fresh",
+            "description": "Ozone transparency enhancing the water accord."
+          }
+        ],
+        "base": [
+          {
+            "name": "Sun-bleached Driftwood",
+            "category": "Wood",
+            "description": "Mineral dry wood seasoned by sun and saltwater."
+          },
+          {
+            "name": "Ambrette Seeds",
+            "category": "Musk",
+            "description": "Botanical musk that wraps skin in subtle solar warmth."
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "var-5-50",
+          "sku": "AF-50-EDP",
+          "sizeMl": 50,
+          "concentration": "Eau de Parfum",
+          "packagingType": "Ocean Gradient Bottle",
+          "price": 2490,
+          "compareAtPrice": 2890,
+          "stockQuantity": 21,
+          "status": "in_stock"
+        },
+        {
+          "id": "var-5-100",
+          "sku": "AF-100-EDP",
+          "sizeMl": 100,
+          "concentration": "Eau de Parfum",
+          "packagingType": "Ocean Gradient Bottle",
+          "price": 3890,
+          "compareAtPrice": 4400,
+          "stockQuantity": 16,
+          "status": "in_stock"
+        }
+      ],
+      "defaultVariantId": "var-5-50",
+      "rating": 4.6,
+      "reviewCount": 22
+    },
+    {
+      "id": "prod-6",
+      "brandId": "brand-atelier-botanique",
+      "brandName": "Atelier Botanique",
+      "name": "Velvet Santal",
+      "slug": "velvet-santal",
+      "shortDescription": "A serene, meditative aura of Australian sandalwood, powdered iris, and violet leaf.",
+      "description": "Velvet Santal is an ode to tranquil architectural sanctuaries. Opening with subtle cardamom warmth and fresh violet leaf, it glides into an ethereal core of Florentine orris root and powdery iris. The base is built on sustainably sourced Australian sandalwood and cashmere woods, generating an aura of effortless elegance.",
+      "fragranceFamily": "Woody",
+      "secondaryFamilies": [
+        "Floral",
+        "Fresh"
+      ],
+      "genderPresentation": "Unisex",
+      "launchYear": 2023,
+      "perfumer": "Dominique Ropion",
+      "intensity": "Subtle",
+      "longevity": "8-10 Hours",
+      "sillage": "Intimate",
+      "characterDescriptors": [
+        "Creamy",
+        "Powdery",
+        "Woody",
+        "Refined",
+        "Comforting"
+      ],
+      "occasions": [
+        "Daily Signature",
+        "Business Meetings",
+        "Quiet Evenings",
+        "Gallery Openings"
+      ],
+      "seasons": [
+        "All-Season",
+        "Autumn",
+        "Spring"
+      ],
+      "productStatus": "active",
+      "mainImageUrl": "/images/perfumes/hinoki-sylvan-main.jpg",
+      "galleryImages": [
+        "/images/perfumes/hinoki-sylvan-main.jpg",
+        "/images/perfumes/hinoki-sylvan-1.jpg",
+        "/images/perfumes/hinoki-sylvan-2.jpg"
+      ],
+      "notes": {
+        "top": [
+          {
+            "name": "Green Cardamom",
+            "category": "Spice",
+            "description": "Subtle botanical spice providing a refined opening whisper."
+          },
+          {
+            "name": "Violet Leaf",
+            "category": "Fresh",
+            "description": "Watery fresh green stems creating natural poise."
+          }
+        ],
+        "heart": [
+          {
+            "name": "Florentine Iris",
+            "category": "Floral",
+            "description": "Buttery, aristocratic orris root of supreme elegance."
+          },
+          {
+            "name": "Cashmere Wood",
+            "category": "Wood",
+            "description": "Silky, enveloping wood accord like a soft cashmere shawl."
+          }
+        ],
+        "base": [
+          {
+            "name": "Mysore Sandalwood",
+            "category": "Wood",
+            "description": "Creamy, serene sandalwood that sits intimately close to skin."
+          },
+          {
+            "name": "Amber",
+            "category": "Amber",
+            "description": "Golden radiant warmth supporting the woody foundation."
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "var-6-50",
+          "sku": "VS-50-EDP",
+          "sizeMl": 50,
+          "concentration": "Eau de Parfum",
+          "packagingType": "Frosted Glass Flacon",
+          "price": 3690,
+          "compareAtPrice": 4200,
+          "stockQuantity": 15,
+          "status": "in_stock"
+        },
+        {
+          "id": "var-6-100",
+          "sku": "VS-100-EDP",
+          "sizeMl": 100,
+          "concentration": "Eau de Parfum",
+          "packagingType": "Frosted Glass Flacon",
+          "price": 5790,
+          "compareAtPrice": 6500,
+          "stockQuantity": 7,
+          "status": "in_stock"
+        }
+      ],
+      "defaultVariantId": "var-6-50",
+      "rating": 4.9,
+      "reviewCount": 31
+    },
+    {
+      "id": "prod-7",
+      "brandId": "brand-parfums-dor",
+      "brandName": "Parfums d'Or",
+      "name": "Vanille Céleste",
+      "slug": "vanille-celeste",
+      "shortDescription": "A decadent, intoxicating elixir of Madagascar vanilla bean, bitter almond, and tonka.",
+      "description": "Vanille Céleste redefines gourmand perfumery as pure liquid luxury. Far from generic sweetness, it reveals the dark, complex facets of sun-cured bourbon vanilla pods paired with bitter almond marzipan and roasted Venezuelan tonka bean. A whisper of caramelized benzoin and white amber creates an irresistible, comforting trail.",
+      "fragranceFamily": "Gourmand",
+      "secondaryFamilies": [
+        "Oriental",
+        "Amber"
+      ],
+      "genderPresentation": "Unisex",
+      "launchYear": 2021,
+      "perfumer": "Francis Kurkdjian",
+      "intensity": "Intense",
+      "longevity": "10-12 Hours",
+      "sillage": "Moderate",
+      "characterDescriptors": [
+        "Sweet",
+        "Warm",
+        "Decadent",
+        "Cozy",
+        "Sensual"
+      ],
+      "occasions": [
+        "Romantic Dates",
+        "Winter Fireside",
+        "Holiday Celebrations",
+        "Intimate Evenings"
+      ],
+      "seasons": [
+        "Autumn",
+        "Winter"
+      ],
+      "productStatus": "active",
+      "mainImageUrl": "/images/perfumes/vanille-doree-main.jpg",
+      "galleryImages": [
+        "/images/perfumes/vanille-doree-main.jpg",
+        "/images/perfumes/vanille-doree-1.jpg",
+        "/images/perfumes/vanille-doree-2.jpg"
+      ],
+      "notes": {
+        "top": [
+          {
+            "name": "Bitter Almond",
+            "category": "Gourmand",
+            "description": "Rich, nutty nuance with hints of toasted marzipan."
+          },
+          {
+            "name": "Calabrian Bergamot",
+            "category": "Citrus",
+            "description": "Luminous citrus lifting the gourmand richness."
+          }
+        ],
+        "heart": [
+          {
+            "name": "Bourbon Vanilla",
+            "category": "Gourmand",
+            "description": "Dark, boozy Madagascar vanilla bean absolute."
+          },
+          {
+            "name": "Florentine Iris",
+            "category": "Floral",
+            "description": "Powdery elegance that prevents excessive sweetness."
+          }
+        ],
+        "base": [
+          {
+            "name": "Tonka Bean",
+            "category": "Gourmand",
+            "description": "Warm roasted hay and almond coumarin depth."
+          },
+          {
+            "name": "Amber",
+            "category": "Amber",
+            "description": "Golden resinous sweetness that clings for 10+ hours."
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "var-7-30",
+          "sku": "VC-30-EDP",
+          "sizeMl": 30,
+          "concentration": "Eau de Parfum",
+          "packagingType": "Gold Accent Flacon",
+          "price": 2790,
+          "compareAtPrice": 3200,
+          "stockQuantity": 20,
+          "status": "in_stock"
+        },
+        {
+          "id": "var-7-50",
+          "sku": "VC-50-EDP",
+          "sizeMl": 50,
+          "concentration": "Eau de Parfum",
+          "packagingType": "Gold Accent Flacon",
+          "price": 3890,
+          "compareAtPrice": 4500,
+          "stockQuantity": 14,
+          "status": "in_stock"
+        },
+        {
+          "id": "var-7-100",
+          "sku": "VC-100-EDP",
+          "sizeMl": 100,
+          "concentration": "Eau de Parfum",
+          "packagingType": "Gold Accent Flacon",
+          "price": 5990,
+          "compareAtPrice": 6800,
+          "stockQuantity": 9,
+          "status": "in_stock"
+        }
+      ],
+      "defaultVariantId": "var-7-50",
+      "rating": 4.9,
+      "reviewCount": 36
+    },
+    {
+      "id": "prod-8",
+      "brandId": "brand-royal-scent",
+      "brandName": "Royal Scent Co.",
+      "name": "Spice Sovereign",
+      "slug": "spice-sovereign",
+      "shortDescription": "A distinguished British accord of pink pepper, nutmeg, smoked vetiver, and cured tobacco.",
+      "description": "Spice Sovereign commands respect with timeless aristocratic poise. Sparks of bright pink pepper and grated nutmeg illuminate an aromatic heart of English clary sage and smoked vetiver root. As the fragrance matures, rich cured tobacco leaf, Virginian cedar, and dark patchouli craft an indelible impression of refined authority.",
+      "fragranceFamily": "Spicy",
+      "secondaryFamilies": [
+        "Woody",
+        "Aromatic"
+      ],
+      "genderPresentation": "Masculine",
+      "launchYear": 2020,
+      "perfumer": "Bertrand Duchaufour",
+      "intensity": "Intense",
+      "longevity": "9-11 Hours",
+      "sillage": "Moderate",
+      "characterDescriptors": [
+        "Spicy",
+        "Woody",
+        "Distinguished",
+        "Warm",
+        "Confident"
+      ],
+      "occasions": [
+        "Black Tie",
+        "Boardroom",
+        "Evening Autumn Dinner",
+        "Private Club"
+      ],
+      "seasons": [
+        "Autumn",
+        "Winter",
+        "Spring"
+      ],
+      "productStatus": "active",
+      "mainImageUrl": "/images/perfumes/sovereign-leather-main.jpg",
+      "galleryImages": [
+        "/images/perfumes/sovereign-leather-main.jpg",
+        "/images/perfumes/sovereign-leather-1.jpg",
+        "/images/perfumes/sovereign-leather-2.jpg"
+      ],
+      "notes": {
+        "top": [
+          {
+            "name": "Pink Pepper",
+            "category": "Spice",
+            "description": "Sparkling, brisk rosy spice that stimulates the senses."
+          },
+          {
+            "name": "Black Pepper",
+            "category": "Spice",
+            "description": "Pungent, warm dry spice establishing masculine elegance."
+          }
+        ],
+        "heart": [
+          {
+            "name": "Aromatic Basil",
+            "category": "Fresh",
+            "description": "English herbal clarity balancing deep spices."
+          },
+          {
+            "name": "Green Cardamom",
+            "category": "Spice",
+            "description": "Aromatic cooling warmth with resinous undertones."
+          }
+        ],
+        "base": [
+          {
+            "name": "Cured Tobacco Leaf",
+            "category": "Spicy",
+            "description": "Rich, sweet pipe tobacco evoking warm mahogany libraries."
+          },
+          {
+            "name": "Virginian Cedarwood",
+            "category": "Wood",
+            "description": "Noble structured cedar with enduring presence."
+          },
+          {
+            "name": "Smoked Vetiver",
+            "category": "Wood",
+            "description": "Flinty, smoky earth providing an authoritative drydown."
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "var-8-50",
+          "sku": "SS-50-EDP",
+          "sizeMl": 50,
+          "concentration": "Eau de Parfum",
+          "packagingType": "Monogrammed Flacon",
+          "price": 3590,
+          "compareAtPrice": 4100,
+          "stockQuantity": 17,
+          "status": "in_stock"
+        },
+        {
+          "id": "var-8-100",
+          "sku": "SS-100-EDP",
+          "sizeMl": 100,
+          "concentration": "Eau de Parfum",
+          "packagingType": "Monogrammed Flacon",
+          "price": 5490,
+          "compareAtPrice": 6200,
+          "stockQuantity": 10,
+          "status": "in_stock"
+        }
+      ],
+      "defaultVariantId": "var-8-50",
+      "rating": 4.8,
+      "reviewCount": 27
+    }
+  ],
+  "reviews": [
+    {
+      "id": "rev-1",
+      "productId": "prod-1",
+      "reviewerName": "Rohan Singhal",
+      "rating": 5,
+      "title": "Mesmerizing smoky oud with breathtaking longevity",
+      "body": "Noir Absolu is truly in a league of its own. The transition from the sharp bergamot into dark Cambodian oud is seamless. Lasted over 12 hours on my coat, and I received endless compliments during a dinner reception. Exceptional presentation.",
+      "verificationStatus": "verified_purchase",
+      "moderationStatus": "published",
+      "createdAt": "2026-02-14T18:32:00.000Z"
+    },
+    {
+      "id": "rev-2",
+      "productId": "prod-1",
+      "reviewerName": "Priyanka Mehta",
+      "rating": 5,
+      "title": "Rich, dark, and sensual",
+      "body": "I bought the 50ml bottle after testing the 2ml complimentary vial. The amber-sandalwood drydown is pure velvet. Luxurious without being cloying.",
+      "verificationStatus": "verified_purchase",
+      "moderationStatus": "published",
+      "createdAt": "2026-03-01T10:15:00.000Z"
+    },
+    {
+      "id": "rev-3",
+      "productId": "prod-1",
+      "reviewerName": "Devansh Nair",
+      "rating": 4,
+      "title": "Bold signature fragrance for winter evenings",
+      "body": "Very potent projection. Two sprays are more than enough. If you love deep woody scents with an oriental spine, you cannot go wrong.",
+      "verificationStatus": "verified_purchase",
+      "moderationStatus": "published",
+      "createdAt": "2026-03-18T14:22:00.000Z"
+    },
+    {
+      "id": "rev-4",
+      "productId": "prod-2",
+      "reviewerName": "Ananya Sharma",
+      "rating": 5,
+      "title": "The most delicate, authentic morning rose",
+      "body": "Unlike synthetic rose perfumes, Rose Éclat smells like walking through dew-drenched rose gardens in Tuscany. The vanilla note in the base adds a creamy finish that stays close to skin all day.",
+      "verificationStatus": "verified_purchase",
+      "moderationStatus": "published",
+      "createdAt": "2026-01-20T11:45:00.000Z"
+    },
+    {
+      "id": "rev-5",
+      "productId": "prod-2",
+      "reviewerName": "Sanya Roy",
+      "rating": 5,
+      "title": "Ideal bridal and spring signature",
+      "body": "Wore this for an outdoor wedding and it was divine. Clean, romantic, and beautifully blended with jasmine.",
+      "verificationStatus": "verified_purchase",
+      "moderationStatus": "published",
+      "createdAt": "2026-02-28T09:12:00.000Z"
+    },
+    {
+      "id": "rev-6",
+      "productId": "prod-3",
+      "reviewerName": "Karan Johar",
+      "rating": 5,
+      "title": "Incredible summer revitalizer",
+      "body": "The grapefruit and basil combination is electric. On hot summer days, this cuts through the heat and keeps you feeling freshly showered and energized.",
+      "verificationStatus": "verified_purchase",
+      "moderationStatus": "published",
+      "createdAt": "2026-03-10T16:04:00.000Z"
+    },
+    {
+      "id": "rev-7",
+      "productId": "prod-4",
+      "reviewerName": "Zaid Al-Mansoor",
+      "rating": 5,
+      "title": "Authentic royal oud perfection",
+      "body": "Being from the Middle East, I have smelled hundreds of oud fragrances. Oud Mystique hits the mark with genuine Cambodian agarwood and saffron. It performs like a high-end niche extrait.",
+      "verificationStatus": "verified_purchase",
+      "moderationStatus": "published",
+      "createdAt": "2026-01-15T20:30:00.000Z"
+    },
+    {
+      "id": "rev-8",
+      "productId": "prod-5",
+      "reviewerName": "Nikhil Joshi",
+      "rating": 5,
+      "title": "Smells like genuine ocean surf",
+      "body": "The sea salt and ambrette seed interplay is masterfully done. It doesn't smell like a generic shower gel; it smells like a brisk morning walk on a secluded beach.",
+      "verificationStatus": "verified_purchase",
+      "moderationStatus": "published",
+      "createdAt": "2026-02-19T13:20:00.000Z"
+    },
+    {
+      "id": "rev-9",
+      "productId": "prod-6",
+      "reviewerName": "Maya Sundaram",
+      "rating": 5,
+      "title": "The definition of quiet luxury",
+      "body": "Subtle, creamy, and sophisticated. The orris root and sandalwood create a calm cocoon around you. Never shouts, yet everyone leans in to ask what you are wearing.",
+      "verificationStatus": "verified_purchase",
+      "moderationStatus": "published",
+      "createdAt": "2026-03-22T17:55:00.000Z"
+    },
+    {
+      "id": "rev-10",
+      "productId": "prod-7",
+      "reviewerName": "Shruti Kapoor",
+      "rating": 5,
+      "title": "Gourmand heaven without cloying sweetness",
+      "body": "Vanille Céleste is warm, intoxicating, and cozy. The bitter almond cuts through the rich Madagascar vanilla bean. My all-time favorite cold weather scent.",
+      "verificationStatus": "verified_purchase",
+      "moderationStatus": "published",
+      "createdAt": "2026-02-05T19:40:00.000Z"
+    },
+    {
+      "id": "rev-11",
+      "productId": "prod-8",
+      "reviewerName": "Vikramaditya Rao",
+      "rating": 5,
+      "title": "Distinguished, masculine, and commanding",
+      "body": "Reminiscent of old British clubs with mahogany paneling and pipe tobacco. The pink pepper opening transitions into an earthy vetiver and tobacco base. Superb craftsmanship.",
+      "verificationStatus": "verified_purchase",
+      "moderationStatus": "published",
+      "createdAt": "2026-03-08T15:10:00.000Z"
+    }
+  ],
+  "coupons": [
+    {
+      "code": "VIBE10",
+      "discountType": "percentage",
+      "value": 10,
+      "minOrderValue": 0,
+      "description": "10% off entire luxury order"
+    },
+    {
+      "code": "LUXE500",
+      "discountType": "fixed",
+      "value": 500,
+      "minOrderValue": 3000,
+      "description": "₹500 off on orders over ₹3,000"
+    },
+    {
+      "code": "WELCOME50",
+      "discountType": "fixed",
+      "value": 250,
+      "minOrderValue": 1500,
+      "description": "₹250 off for first-time scent explorers"
+    }
+  ],
+  "orders": [
+    {
+      "id": "ord-1",
+      "orderNumber": "VP-2026-98102",
+      "customerId": "cust-1",
+      "customerEmail": "rohan.singhal@example.com",
+      "customerPhone": "+91 98765 43210",
+      "orderStatus": "delivered",
+      "paymentStatus": "paid",
+      "paymentMethod": "Credit Card",
+      "currency": "INR",
+      "subtotal": 3490,
+      "discount": 349,
+      "discountCode": "VIBE10",
+      "shipping": 0,
+      "tax": 0,
+      "total": 3141,
+      "shippingAddress": {
+        "fullName": "Rohan Singhal",
+        "addressLine1": "Apt 402, Sovereign Towers, Golf Course Road",
+        "city": "Gurugram",
+        "state": "Haryana",
+        "postalCode": "122002",
+        "country": "India"
+      },
+      "items": [
+        {
+          "productId": "prod-1",
+          "variantId": "var-1-50",
+          "productName": "Noir Absolu",
+          "brandName": "Maison Luxe",
+          "sku": "NA-50-EDP",
+          "sizeMl": 50,
+          "concentration": "Eau de Parfum",
+          "unitPrice": 3490,
+          "quantity": 1,
+          "lineTotal": 3490,
+          "imageUrl": "https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&q=80&w=800"
+        }
+      ],
+      "timeline": [
+        {
+          "status": "confirmed",
+          "timestamp": "2026-02-10T14:10:00.000Z",
+          "message": "Order placed & payment verified."
+        },
+        {
+          "status": "processing",
+          "timestamp": "2026-02-11T09:30:00.000Z",
+          "message": "Curated & sealed with complimentary 2ml sample vial."
+        },
+        {
+          "status": "shipped",
+          "timestamp": "2026-02-11T16:45:00.000Z",
+          "message": "Dispatched via BlueDart Express (AWB: BLU98214)."
+        },
+        {
+          "status": "delivered",
+          "timestamp": "2026-02-13T11:20:00.000Z",
+          "message": "Delivered to recipient."
+        }
+      ],
+      "createdAt": "2026-02-10T14:10:00.000Z",
+      "updatedAt": "2026-02-13T11:20:00.000Z"
+    }
+  ],
+  "inventoryLogs": []
+}

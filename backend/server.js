@@ -1,60 +1,61 @@
 import express from 'express';
-import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import cors from 'cors';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import productRoutes from './routes/productRoutes.js';
+import discoveryRoutes from './routes/discoveryRoutes.js';
+import commerceRoutes from './routes/commerceRoutes.js';
+import adminRoutes from './routes/adminRoutes.js';
 
 dotenv.config();
 
-
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5050;
 
-// Middleware
-const allowedOrigins = [
-  process.env.FRONTEND_URL || 'https://vaibhav-0924.github.io',
-  'http://localhost:5173',
-];
+// CORS setup
 app.use(cors({
-  origin: (origin, callback) => {
-    // allow requests with no origin (curl, Postman)
-    if (!origin || allowedOrigins.some(o => origin.startsWith(o))) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
+  origin: true, // Allow all origins for dev/preview/sandbox
   credentials: true,
 }));
+
 app.use(express.json());
+
+// Serve static images for perfume bottles
+const publicImagesPath = path.resolve(__dirname, '../frontend/public/images');
+app.use('/images', express.static(publicImagesPath));
 
 // Routes
 app.use('/api/products', productRoutes);
+app.use('/api/discovery', discoveryRoutes);
+app.use('/api/commerce', commerceRoutes);
+app.use('/api/admin', adminRoutes);
 
-// Health check
-app.get('/', (req, res) => {
-  res.send('VIBEPERFUME API is running...');
+// Health check & API Overview
+app.get('/api/health', (req, res) => {
+  res.json({ status: 'ok', uptime: process.uptime(), timestamp: new Date().toISOString() });
 });
 
-// Database Connection
-let isDbConnected = false;
-mongoose.connect(process.env.MONGODB_URI)
-  .then(() => {
-    console.log('MongoDB connected');
-    isDbConnected = true;
-  })
-  .catch(err => {
-    console.error('MongoDB connection error:', err.message);
-    isDbConnected = false;
+app.get('/', (req, res) => {
+  res.json({
+    status: 'online',
+    app: 'VIBE PERFUME Luxury API',
+    version: '2.0.0',
+    endpoints: {
+      health: '/api/health',
+      products: '/api/products',
+      discovery: '/api/discovery',
+      commerce: '/api/commerce',
+      admin: '/api/admin'
+    }
   });
-
-// Inject connection status into request for controllers
-app.use((req, res, next) => {
-  req.isDbConnected = isDbConnected;
-  next();
 });
 
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`[VibePerfume Backend] Running on port ${PORT}`);
 });
+
+export default app;

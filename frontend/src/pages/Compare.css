@@ -1,0 +1,149 @@
+.compare-page {
+  padding: 8rem 0 6rem;
+}
+
+.compare-header-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.compare-header-row h1 {
+  font-size: 2.8rem;
+  margin-bottom: 0.4rem;
+}
+
+.compare-table-wrapper {
+  overflow-x: auto;
+  background: var(--bg-surface);
+  border: 1px solid var(--gold-border);
+  border-radius: var(--radius-md);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
+}
+
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 780px;
+}
+
+.compare-table th, .compare-table td {
+  padding: 1.2rem 1.4rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+  vertical-align: top;
+}
+
+.compare-table th:last-child, .compare-table td:last-child {
+  border-right: none;
+}
+
+.compare-table tr:last-child td {
+  border-bottom: none;
+}
+
+.compare-attr-label {
+  width: 180px;
+  background: #111117;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--gold-light);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.compare-product-col {
+  min-width: 200px;
+}
+
+.compare-card-header {
+  position: relative;
+  text-align: center;
+  padding-bottom: 0.5rem;
+}
+
+.btn-remove-col {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: var(--text-muted);
+  padding: 0.3rem;
+  border-radius: 50%;
+}
+
+.btn-remove-col:hover {
+  color: var(--danger);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.compare-flacon-img {
+  width: 110px;
+  height: 130px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  margin: 0 auto 0.8rem;
+  background: #111;
+  display: block;
+}
+
+.compare-flacon-brand {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  color: var(--gold-primary);
+  letter-spacing: 0.06em;
+}
+
+.compare-flacon-title {
+  font-size: 1.25rem;
+  margin: 0.2rem 0 0.8rem;
+}
+
+.compare-cell-text {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+}
+
+.compare-price-val {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.compare-unit-price {
+  font-size: 0.78rem;
+  color: var(--gold-light);
+  margin-top: 2px;
+}
+
+.compare-notes-cell {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.compare-note-chip {
+  font-size: 0.75rem;
+  padding: 0.15rem 0.5rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+}
+
+.compare-empty-view {
+  text-align: center;
+  padding: 6rem 1rem;
+  background: var(--bg-surface);
+  border-radius: var(--radius-md);
+  border: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.compare-empty-view h3 {
+  font-size: 2rem;
+  margin-bottom: 0.6rem;
+}
