@@ -5,53 +5,75 @@ import { brands, fragranceFamilies, noteGlossary, products, reviews, coupons, sa
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const DB_FILE = path.join(__dirname, 'store.json');
+function isTestMode() {
+  return process.env.NODE_ENV === 'test' || process.argv.some(arg => arg.includes('test'));
+}
+
+function getDbFile() {
+  if (isTestMode()) {
+    return path.join(__dirname, 'store.test.json');
+  }
+  return path.join(__dirname, 'store.json');
+}
+
+function createInitialData() {
+  return {
+    brands: JSON.parse(JSON.stringify(brands)),
+    fragranceFamilies: JSON.parse(JSON.stringify(fragranceFamilies)),
+    noteGlossary: JSON.parse(JSON.stringify(noteGlossary)),
+    products: JSON.parse(JSON.stringify(products)),
+    reviews: JSON.parse(JSON.stringify(reviews)),
+    coupons: JSON.parse(JSON.stringify(coupons)),
+    orders: JSON.parse(JSON.stringify(sampleOrders)),
+    inventoryLogs: []
+  };
+}
 
 // Initialize store if missing
 function loadStore() {
+  const dbFile = getDbFile();
   try {
-    if (!fs.existsSync(DB_FILE)) {
-      const initialData = {
-        brands,
-        fragranceFamilies,
-        noteGlossary,
-        products,
-        reviews,
-        coupons,
-        orders: sampleOrders,
-        inventoryLogs: []
-      };
-      fs.writeFileSync(DB_FILE, JSON.stringify(initialData, null, 2), 'utf-8');
+    if (!fs.existsSync(dbFile)) {
+      const initialData = createInitialData();
+      fs.writeFileSync(dbFile, JSON.stringify(initialData, null, 2), 'utf-8');
       return initialData;
     }
-    const raw = fs.readFileSync(DB_FILE, 'utf-8');
+    const raw = fs.readFileSync(dbFile, 'utf-8');
     return JSON.parse(raw);
   } catch (err) {
     console.error('Failed to load DB store, falling back to seed data:', err.message);
-    return {
-      brands,
-      fragranceFamilies,
-      noteGlossary,
-      products,
-      reviews,
-      coupons,
-      orders: sampleOrders,
-      inventoryLogs: []
-    };
+    return createInitialData();
   }
 }
 
 function saveStore(data) {
+  const dbFile = getDbFile();
   try {
-    const tmpFile = `${DB_FILE}.tmp`;
+    const tmpFile = `${dbFile}.tmp`;
     fs.writeFileSync(tmpFile, JSON.stringify(data, null, 2), 'utf-8');
-    fs.renameSync(tmpFile, DB_FILE);
+    fs.renameSync(tmpFile, dbFile);
   } catch (err) {
     console.error('Failed to save DB store:', err.message);
   }
 }
 
 export const db = {
+  resetStore() {
+    const initialData = createInitialData();
+    saveStore(initialData);
+    return initialData;
+  },
+
+  cleanupTestStore() {
+    if (isTestMode()) {
+      const testFile = getDbFile();
+      if (fs.existsSync(testFile)) {
+        try {
+          fs.unlinkSync(testFile);
+        } catch {}
+      }
+    }
+  },
   // --- BRANDS ---
   getBrands() {
     const store = loadStore();

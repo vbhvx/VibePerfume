@@ -14,10 +14,14 @@ import type {
 import * as fallback from './fallbackService';
 
 const API_URL = import.meta.env.VITE_API_URL || '/api';
+const ADMIN_API_KEY = import.meta.env.VITE_ADMIN_API_KEY || 'vibe-atelier-admin-key-2026';
 
 export const api = axios.create({
   baseURL: API_URL,
   timeout: 8000,
+  headers: {
+    'x-admin-key': ADMIN_API_KEY
+  }
 });
 
 // --- CATALOG API ---

@@ -61,7 +61,28 @@ export const AdminDashboard: React.FC = () => {
   };
 
   useEffect(() => {
-    loadAllAdminData();
+    let active = true;
+    const fetchAdminData = async () => {
+      try {
+        const [metRes, prodRes, ordRes, revRes] = await Promise.all([
+          fetchAdminMetrics(),
+          fetchProducts(),
+          fetchAdminOrders(),
+          fetchAdminReviews()
+        ]);
+        if (!active) return;
+        if (metRes.success && metRes.data) setMetrics(metRes.data);
+        if (prodRes.success && prodRes.data) setProducts(prodRes.data);
+        if (ordRes.success && ordRes.data) setOrders(ordRes.data);
+        if (revRes.success && revRes.data) setReviews(revRes.data);
+      } catch (err) {
+        if (!active) return;
+        console.error(err);
+        toast.error('Failed to retrieve atelier administration data.');
+      }
+    };
+    fetchAdminData();
+    return () => { active = false; };
   }, []);
 
   const handleUpdateOrderStatus = async (orderId: string, newStatus: string) => {
@@ -99,7 +120,7 @@ export const AdminDashboard: React.FC = () => {
         setStockModalOpen(false);
         loadAllAdminData();
       }
-    } catch (err: any) {
+    } catch {
       toast.error('Failed to update inventory balance.');
     }
   };

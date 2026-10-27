@@ -1,15 +1,21 @@
+process.env.NODE_ENV = 'test';
+process.env.ADMIN_API_KEY = 'test-atelier-secret-key-999';
+
 import { test, describe, before, after } from 'node:test';
 import assert from 'node:assert';
-import http from 'http';
 import app from '../server.js';
 import { db } from '../data/db.js';
 
 let server;
 let baseUrl;
+const adminHeaders = {
+  'Content-Type': 'application/json',
+  'x-admin-key': process.env.ADMIN_API_KEY
+};
 
 before(async () => {
+  db.resetStore();
   await new Promise((resolve) => {
-    // Start on port 5051 for test
     server = app.listen(5051, () => {
       baseUrl = 'http://localhost:5051';
       resolve();
@@ -18,7 +24,10 @@ before(async () => {
 });
 
 after(async () => {
-  await new Promise((resolve) => server.close(resolve));
+  if (server) {
+    await new Promise((resolve) => server.close(resolve));
+  }
+  db.cleanupTestStore();
 });
 
 describe('VibePerfume API Endpoints', () => {
@@ -149,7 +158,7 @@ describe('VibePerfume API Endpoints', () => {
     assert.strictEqual(jsonInvalid.success, false);
     assert.match(jsonInvalid.message, /invalid/i);
 
-    // 2. Below minimum spend (LUXE500 requires ₹5000)
+    // 2. Below minimum spend (LUXE500 requires ₹3000)
     const resLow = await fetch(`${baseUrl}/api/commerce/coupons/validate?code=LUXE500&subtotal=1000`);
     assert.strictEqual(resLow.status, 400);
     const jsonLow = await resLow.json();
@@ -224,14 +233,42 @@ describe('VibePerfume API Endpoints', () => {
     assert.strictEqual(finalStock, preOrderStock);
   });
 
-  test('PATCH /api/admin/orders/:id/status updates status with audit note', async () => {
+  // --- SECURITY & AUTHORIZATION TESTS ---
+  test('Admin endpoints reject unauthenticated requests with 401', async () => {
+    const res = await fetch(`${baseUrl}/api/admin/metrics`);
+    assert.strictEqual(res.status, 401);
+    const json = await res.json();
+    assert.strictEqual(json.success, false);
+    assert.match(json.message, /unauthorized/i);
+  });
+
+  test('Product mutations reject unauthenticated requests with 401', async () => {
+    const res = await fetch(`${baseUrl}/api/products`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: 'Unauthorized Flacon' })
+    });
+    assert.strictEqual(res.status, 401);
+  });
+
+  test('Admin endpoints succeed when providing valid x-admin-key', async () => {
+    const res = await fetch(`${baseUrl}/api/admin/metrics`, {
+      headers: adminHeaders
+    });
+    assert.strictEqual(res.status, 200);
+    const json = await res.json();
+    assert.strictEqual(json.success, true);
+    assert.ok(json.data.totalOrders >= 0);
+  });
+
+  test('PATCH /api/admin/orders/:id/status updates status with audit note when authenticated', async () => {
     const orders = db.getAllOrders();
     assert.ok(orders.length > 0);
     const targetOrder = orders[0];
 
     const res = await fetch(`${baseUrl}/api/admin/orders/${targetOrder.orderNumber}/status`, {
       method: 'PATCH',
-      headers: { 'Content-Type': 'application/json' },
+      headers: adminHeaders,
       body: JSON.stringify({ status: 'shipped', note: 'Dispatched via BlueDart Express Air' })
     });
     const json = await res.json();
@@ -240,7 +277,7 @@ describe('VibePerfume API Endpoints', () => {
     assert.ok(json.data.timeline.some(t => t.message.includes('BlueDart')));
   });
 
-  test('PATCH /api/admin/inventory adjusts variant stock quantity and logs delta', async () => {
+  test('PATCH /api/admin/inventory adjusts variant stock quantity when authenticated', async () => {
     const products = db.getProducts();
     const p1 = products[0];
     const v1 = p1.variants[0];
@@ -248,7 +285,7 @@ describe('VibePerfume API Endpoints', () => {
 
     const res = await fetch(`${baseUrl}/api/admin/inventory`, {
       method: 'PATCH',
-      headers: { 'Content-Type': 'application/json' },
+      headers: adminHeaders,
       body: JSON.stringify({
         variantId: v1.id,
         quantityDelta: 5,
@@ -258,6 +295,43 @@ describe('VibePerfume API Endpoints', () => {
     const json = await res.json();
     assert.strictEqual(res.status, 200);
     assert.strictEqual(json.data.stockQuantity, currentStock + 5);
+  });
+
+  // --- ORDER TRACKING PII PRIVACY TESTS ---
+  test('GET /api/commerce/orders/:orderNumber masks PII when unauthenticated', async () => {
+    const orders = db.getAllOrders();
+    const targetOrder = orders[0];
+
+    const res = await fetch(`${baseUrl}/api/commerce/orders/${targetOrder.orderNumber}`);
+    assert.strictEqual(res.status, 200);
+    const json = await res.json();
+    assert.strictEqual(json.success, true);
+    assert.strictEqual(json.data.isMasked, true);
+    assert.ok(json.data.customerEmail.includes('*'));
+    assert.ok(json.data.shippingAddress.addressLine1.includes('Masked'));
+  });
+
+  test('GET /api/commerce/orders/:orderNumber rejects mismatched email with 403', async () => {
+    const orders = db.getAllOrders();
+    const targetOrder = orders[0];
+
+    const res = await fetch(`${baseUrl}/api/commerce/orders/${targetOrder.orderNumber}?email=wrong.buyer@example.com`);
+    assert.strictEqual(res.status, 403);
+    const json = await res.json();
+    assert.strictEqual(json.success, false);
+    assert.match(json.message, /match/i);
+  });
+
+  test('GET /api/commerce/orders/:orderNumber returns full unmasked order when email matches', async () => {
+    const orders = db.getAllOrders();
+    const targetOrder = orders[0];
+
+    const res = await fetch(`${baseUrl}/api/commerce/orders/${targetOrder.orderNumber}?email=${encodeURIComponent(targetOrder.customerEmail)}`);
+    assert.strictEqual(res.status, 200);
+    const json = await res.json();
+    assert.strictEqual(json.success, true);
+    assert.strictEqual(json.data.customerEmail, targetOrder.customerEmail);
+    assert.strictEqual(json.data.shippingAddress.addressLine1, targetOrder.shippingAddress.addressLine1);
   });
 
   test('GET /api/products/:id returns 404 for unknown product id', async () => {

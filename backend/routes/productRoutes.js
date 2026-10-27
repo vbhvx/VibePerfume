@@ -9,18 +9,19 @@ import {
   getProductReviews, 
   addProductReview 
 } from '../controllers/productController.js';
+import { requireAdmin } from '../middleware/auth.js';
 
 const router = express.Router();
 
 router.get('/', getProducts);
 router.get('/:id', getProductById);
-router.post('/', [
+router.post('/', requireAdmin, [
   body('name').isString().notEmpty().withMessage('Product name is required'),
   body('brandName').isString().notEmpty().withMessage('Brand name is required'),
   body('fragranceFamily').isString().notEmpty().withMessage('Fragrance family is required')
 ], createProduct);
-router.put('/:id', updateProduct);
-router.delete('/:id', deleteProduct);
+router.put('/:id', requireAdmin, updateProduct);
+router.delete('/:id', requireAdmin, deleteProduct);
 
 router.get('/:id/reviews', getProductReviews);
 router.post('/:id/reviews', [

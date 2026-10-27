@@ -98,7 +98,7 @@ npm test
 
 Or individually:
 ```bash
-npm run test:backend   # Runs 13 API integration tests with node:test (Catalog, Scent Finder, AI Sommelier, Cart, Orders, Admin, Reviews)
+npm run test:backend   # Runs 19 API integration tests with node:test (Catalog, Scent Finder, AI Sommelier, Cart, Orders, Admin, PII Masking, Security)
 npm run test:frontend  # Runs 7 commerce and discovery unit tests with Vitest
 ```
 

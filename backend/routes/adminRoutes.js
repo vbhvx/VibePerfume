@@ -1,7 +1,11 @@
 import express from 'express';
 import { db } from '../data/db.js';
+import { requireAdmin } from '../middleware/auth.js';
 
 const router = express.Router();
+
+// Enforce Atelier administration authentication on all admin endpoints
+router.use(requireAdmin);
 
 // Admin metrics
 router.get('/metrics', (req, res) => {

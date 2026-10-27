@@ -128,7 +128,7 @@ export const ProductDetail: React.FC = () => {
     if (navigator.share) {
       try {
         await navigator.share(shareData);
-      } catch (err) {
+      } catch {
         // User dismissed
       }
     } else {

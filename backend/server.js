@@ -17,8 +17,21 @@ const app = express();
 const PORT = process.env.PORT || 5050;
 
 // CORS setup
+const allowedOrigins = process.env.ALLOWED_ORIGINS 
+  ? process.env.ALLOWED_ORIGINS.split(',').map(o => o.trim())
+  : null;
+
 app.use(cors({
-  origin: true, // Allow all origins for dev/preview/sandbox
+  origin: (origin, callback) => {
+    // Allow requests with no origin (like mobile apps, curl, or node test runner)
+    if (!origin || !allowedOrigins) {
+      return callback(null, true);
+    }
+    if (allowedOrigins.includes(origin) || allowedOrigins.includes('*')) {
+      return callback(null, true);
+    }
+    return callback(new Error('Blocked by Atelier CORS security policy'));
+  },
   credentials: true,
 }));
 
@@ -54,8 +67,11 @@ app.get('/', (req, res) => {
   });
 });
 
-app.listen(PORT, () => {
-  console.log(`[VibePerfume Backend] Running on port ${PORT}`);
-});
+const isTestEnv = process.env.NODE_ENV === 'test' || process.argv.some(arg => arg.includes('test'));
+if (!isTestEnv) {
+  app.listen(PORT, () => {
+    console.log(`[VibePerfume Backend] Running on port ${PORT}`);
+  });
+}
 
 export default app;

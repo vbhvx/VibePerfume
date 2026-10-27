@@ -7,7 +7,7 @@ export const FALLBACK_PERFUME_IMAGE = '/images/hero-perfume.jpg';
  * 3. Vercel deployment (root path '/')
  */
 export function getAssetUrl(path?: string | null): string {
-  if (!path) return FALLBACK_PERFUME_IMAGE;
+  if (!path) path = FALLBACK_PERFUME_IMAGE;
   
   if (path.startsWith('http://') || path.startsWith('https://') || path.startsWith('data:')) {
     return path;
@@ -38,7 +38,8 @@ export function getAssetUrl(path?: string | null): string {
  */
 export function handleImageError(e: React.SyntheticEvent<HTMLImageElement, Event>) {
   const target = e.currentTarget;
-  if (target.src !== FALLBACK_PERFUME_IMAGE) {
-    target.src = FALLBACK_PERFUME_IMAGE;
+  const resolvedFallback = getAssetUrl(FALLBACK_PERFUME_IMAGE);
+  if (target.src !== resolvedFallback) {
+    target.src = resolvedFallback;
   }
 }

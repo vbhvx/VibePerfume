@@ -79,7 +79,27 @@ router.post('/checkout/orders', (req, res) => {
   }
 });
 
-// Order lookup for tracking
+function maskEmail(email) {
+  if (!email || !email.includes('@')) return '••••••';
+  const [local, domain] = email.split('@');
+  if (local.length <= 2) return `${local[0]}*@${domain}`;
+  return `${local.slice(0, 2)}${'*'.repeat(Math.max(1, local.length - 2))}@${domain}`;
+}
+
+function maskPhone(phone) {
+  if (!phone) return '••••••';
+  const clean = phone.trim();
+  if (clean.length < 4) return '••••••';
+  return `${clean.slice(0, 3)} ••• ••${clean.slice(-2)}`;
+}
+
+function maskName(name) {
+  if (!name) return 'Customer';
+  const parts = name.trim().split(/\s+/);
+  return parts.map(p => p[0] + '*'.repeat(Math.max(1, p.length - 1))).join(' ');
+}
+
+// Order lookup for tracking with PII privacy protection
 router.get('/orders/:orderNumber', (req, res) => {
   try {
     const order = db.getOrder(req.params.orderNumber);
@@ -87,15 +107,30 @@ router.get('/orders/:orderNumber', (req, res) => {
       return res.status(404).json({ success: false, message: 'Order reference not found' });
     }
 
-    // Optional email verification if passed
+    // If customer email provided, verify match for full unmasked access
     if (req.query.email) {
       const emailQuery = req.query.email.trim().toLowerCase();
       if (order.customerEmail.toLowerCase() !== emailQuery) {
         return res.status(403).json({ success: false, message: 'Email address does not match this order.' });
       }
+      return res.json({ success: true, data: order, authenticated: true });
     }
 
-    res.json({ success: true, data: order });
+    // Default: Return tracking milestones and items with sensitive personal PII masked
+    const maskedOrder = {
+      ...order,
+      isMasked: true,
+      customerEmail: maskEmail(order.customerEmail),
+      customerPhone: maskPhone(order.customerPhone),
+      shippingAddress: {
+        ...order.shippingAddress,
+        fullName: maskName(order.shippingAddress?.fullName),
+        addressLine1: '•••••••• (Masked for privacy - provide order email to view full address)',
+        addressLine2: undefined
+      }
+    };
+
+    res.json({ success: true, data: maskedOrder, authenticated: false });
   } catch (err) {
     res.status(500).json({ success: false, message: err.message });
   }
