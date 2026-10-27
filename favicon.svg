@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <!-- Background rounded squircle for contrast in both dark and light browser tab themes -->
+    <linearGradient id="vp-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#14141c" />
+      <stop offset="100%" stop-color="#08080c" />
+    </linearGradient>
+
+    <!-- Luxury Champagne Gold Gradient -->
+    <linearGradient id="vp-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fdf4cf" />
+      <stop offset="25%" stop-color="#e5c064" />
+      <stop offset="60%" stop-color="#c59b27" />
+      <stop offset="100%" stop-color="#916c0e" />
+    </linearGradient>
+
+    <!-- Shimmer Glass Facet Highlight -->
+    <linearGradient id="vp-facet" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.5" />
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.05" />
+      <stop offset="100%" stop-color="#d4af37" stop-opacity="0.3" />
+    </linearGradient>
+
+    <!-- Core Amber Glow -->
+    <radialGradient id="vp-glow" cx="50%" cy="55%" r="45%">
+      <stop offset="0%" stop-color="#ffe89e" stop-opacity="0.8" />
+      <stop offset="40%" stop-color="#d4af37" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#c59b27" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Container Squircle / Badge -->
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="url(#vp-bg)" stroke="url(#vp-gold)" stroke-width="1.5" />
+
+  <!-- Atomizer Cap / Stopper -->
+  <rect x="26" y="8" width="12" height="9" rx="2" fill="url(#vp-gold)" />
+  <rect x="27.5" y="9.5" width="9" height="6" rx="1" fill="#fff" fill-opacity="0.25" />
+
+  <!-- Bottle Neck Collar -->
+  <rect x="29" y="17" width="6" height="4" fill="url(#vp-gold)" />
+  <rect x="24" y="21" width="16" height="2.5" rx="1" fill="url(#vp-gold)" />
+
+  <!-- Emerald-Cut Flacon Bottle Silhouette -->
+  <path d="M22 23.5 L14 29 L16 53 L22 56 L42 56 L48 53 L50 29 L42 23.5 Z" fill="#181824" stroke="url(#vp-gold)" stroke-width="1.75" stroke-linejoin="round" />
+
+  <!-- Inner Fragrance Essence / Liquid Glow -->
+  <path d="M23 27 L17 31 L18.5 51 L23 53.5 L41 53.5 L45.5 51 L47 31 L41 27 Z" fill="url(#vp-glow)" />
+
+  <!-- Glass Facet Cut Angle Reflections -->
+  <path d="M14 29 L23 33 L23 50 L18.5 51 Z" fill="url(#vp-facet)" opacity="0.6" />
+  <path d="M50 29 L41 33 L41 50 L45.5 51 Z" fill="url(#vp-facet)" opacity="0.3" />
+
+  <!-- Iconic Vibe 'V' Monogram / Discovery Star in Center -->
+  <path d="M27 34 L32 44 L37 34 L34.5 34 L32 40 L29.5 34 Z" fill="url(#vp-gold)" />
+  <circle cx="32" cy="30" r="1.5" fill="#fdf4cf" />
+</svg>
