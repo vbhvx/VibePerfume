@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Search, Heart, ShoppingBag, Scale, Menu, X, Shield } from 'lucide-react';
+import { Search, Heart, ShoppingBag, Scale, Menu, X } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useWishlist } from '../context/WishlistContext';
 import { useCompare } from '../context/CompareContext';
@@ -40,6 +40,20 @@ export const Navbar: React.FC = () => {
 
   return (
     <>
+      <header className="site-header">
+      {/* Announcement Bar */}
+      <div className="announcement-bar">
+        <div className="container announcement-bar-inner">
+          <span className="announcement-text">Authentic, batch-verified</span>
+          <span className="announcement-dot">•</span>
+          <span className="announcement-text highlight">Free 2 ml tester with every bottle</span>
+          <span className="announcement-dot">•</span>
+          <span className="announcement-text">30-day sealed returns</span>
+          <span className="announcement-dot">•</span>
+          <span className="announcement-text">Free express delivery over ₹2,000</span>
+        </div>
+      </div>
+
       <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
         <div className="container nav-content">
           {/* Logo */}
@@ -115,12 +129,6 @@ export const Navbar: React.FC = () => {
               )}
             </button>
 
-            {/* Admin Portal link */}
-            <Link to="/admin" className="admin-nav-link" title="Atelier Portal">
-              <Shield size={13} style={{ display: 'inline', marginRight: 4, verticalAlign: -1 }} />
-              Admin
-            </Link>
-
             {/* Mobile menu toggle */}
             <button 
               className="mobile-menu-btn" 
@@ -150,11 +158,9 @@ export const Navbar: React.FC = () => {
           <Link to="/wishlist" className="mobile-link" onClick={() => setIsOpen(false)}>
             My Wishlist ({wishlistCount})
           </Link>
-          <Link to="/admin" className="mobile-link" onClick={() => setIsOpen(false)}>
-            Atelier Staff Admin
-          </Link>
         </div>
       </nav>
+    </header>
 
       {/* Search Modal */}
       <SearchModal 

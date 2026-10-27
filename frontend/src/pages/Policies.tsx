@@ -93,6 +93,41 @@ export const Policies: React.FC = () => {
               <li><strong>Keep Away from Steam:</strong> Avoid storing perfumes in the bathroom. Humidity and temperature fluctuations break down aromatic bonds. Store in a cool, dark drawer or wardrobe.</li>
             </ul>
           </section>
+
+          {/* Policy 5: Privacy Policy */}
+          <section id="privacy" className="policy-block">
+            <h2>Privacy Policy</h2>
+            <p>
+              Vibe Fragrances Private Limited is committed to protecting your personal data in accordance with the Information Technology Act, 2000 and Digital Personal Data Protection (DPDP) Act.
+            </p>
+            <ul>
+              <li><strong>Data Collection:</strong> We collect contact information (name, address, phone number, email) solely for shipping order fulfillment and delivery tracking updates.</li>
+              <li><strong>Zero Sale of Data:</strong> We never sell, rent, or lease your personal information to third-party advertisers.</li>
+              <li><strong>Payment Security:</strong> Payment details are processed through RBI-authorized PCI-DSS compliant gateways with 256-bit SSL encryption. We never store credit/debit card credentials.</li>
+            </ul>
+          </section>
+
+          {/* Policy 6: Terms of Service */}
+          <section id="terms" className="policy-block">
+            <h2>Terms of Service</h2>
+            <p>
+              By accessing Vibe Perfume, you agree to comply with our terms. Products are intended for personal consumer use. Prices listed in INR include applicable GST. All trademarks, bottle designs, and formulation descriptions are property of their respective ateliers.
+            </p>
+          </section>
+
+          {/* Policy 7: Grievance Redressal */}
+          <section id="grievance" className="policy-block">
+            <h2>Grievance Redressal & Statutory Compliance</h2>
+            <p>
+              In compliance with the Consumer Protection (E-Commerce) Rules, 2020:
+            </p>
+            <ul>
+              <li><strong>Grievance Officer:</strong> Mr. Raghav Mehra</li>
+              <li><strong>Email:</strong> grievance@vibefragrance.in | concierge@vibefragrance.in</li>
+              <li><strong>Registered Office:</strong> Vibe Fragrances Private Limited, DLF Phase 5, Golf Course Road, Gurugram, Haryana 122002</li>
+              <li><strong>Response Timeline:</strong> Acknowledgement within 48 hours; resolution within 30 days.</li>
+            </ul>
+          </section>
         </div>
       </div>
     </div>

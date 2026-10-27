@@ -1,9 +1,43 @@
 .footer {
-  background: #08080a;
+  background: #07070a;
   border-top: 1px solid var(--gold-border);
-  padding: 4.5rem 0 2rem;
-  margin-top: 6rem;
+  padding: 4.5rem 0 5.5rem;
+  margin-top: 5rem;
   color: var(--text-secondary);
+}
+
+/* Trust Guarantee Strip at Top of Footer */
+.footer-trust-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  padding-bottom: 3.5rem;
+  margin-bottom: 3.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-trust-col {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.footer-trust-icon {
+  color: var(--gold-primary);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.footer-trust-col h4 {
+  font-size: 1.05rem;
+  color: var(--text-primary);
+  margin-bottom: 0.35rem;
+}
+
+.footer-trust-col p {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--text-muted);
 }
 
 .footer-top {
@@ -22,24 +56,42 @@
 .footer-bio {
   font-size: 0.9rem;
   line-height: 1.7;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   margin-bottom: 1.5rem;
   max-width: 380px;
 }
 
-.footer-trust-badges {
+.footer-contact-block {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  border-radius: var(--radius-sm);
+  max-width: 380px;
 }
 
-.trust-badge-pill {
-  font-size: 0.75rem;
+.footer-contact-block h5 {
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
   color: var(--gold-light);
-  background: var(--gold-subtle);
-  border: 1px solid var(--gold-border);
-  padding: 0.3rem 0.7rem;
-  border-radius: var(--radius-full);
+  margin-bottom: 0.3rem;
+  font-family: var(--font-sans);
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+}
+
+.contact-item svg {
+  color: var(--gold-primary);
+  flex-shrink: 0;
 }
 
 .footer-col h4 {
@@ -66,10 +118,15 @@
   transform: translateX(3px);
 }
 
-.footer-newsletter p {
+.newsletter-incentive {
   font-size: 0.88rem;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.newsletter-incentive strong {
+  color: var(--gold-light);
 }
 
 .footer-newsletter-form {
@@ -82,24 +139,95 @@
   width: 100%;
   padding: 0.75rem 1rem;
   font-size: 0.88rem;
+  background: #111116;
+}
+
+.newsletter-note {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-top: 0.35rem;
+  display: block;
+}
+
+/* Payment & Legal Entity Meta Bar */
+.footer-meta-bar {
+  padding: 2rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.payment-badges-wrap {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.payment-title {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.payment-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.payment-pill {
+  font-size: 0.75rem;
+  padding: 0.3rem 0.65rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-sm);
+  color: #cfcfdc;
+}
+
+.business-details-wrap {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.business-details-wrap strong {
+  color: var(--text-secondary);
 }
 
 .footer-bottom {
-  padding-top: 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 0.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   color: var(--text-muted);
+  padding-right: 6rem; /* Extra right clearance for floating AI Sommelier orb */
 }
 
 .footer-legal-links {
   display: flex;
+  flex-wrap: wrap;
   gap: 1.5rem;
 }
 
+.footer-legal-links a {
+  color: var(--text-secondary);
+  transition: color var(--transition-fast);
+}
+
+.footer-legal-links a:hover {
+  color: var(--gold-light);
+}
+
 @media (max-width: 1024px) {
+  .footer-trust-strip {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
   .footer-top {
     grid-template-columns: 1fr 1fr;
     gap: 2.5rem;
@@ -107,6 +235,9 @@
 }
 
 @media (max-width: 640px) {
+  .footer {
+    padding-bottom: 6.5rem;
+  }
   .footer-top {
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -115,5 +246,10 @@
     flex-direction: column;
     gap: 1rem;
     text-align: center;
+    padding-right: 0;
+  }
+  .footer-legal-links {
+    justify-content: center;
+    gap: 1rem;
   }
 }

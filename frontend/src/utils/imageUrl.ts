@@ -1,5 +1,4 @@
-export const FALLBACK_PERFUME_IMAGE = 
-  'https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&q=80&w=800';
+export const FALLBACK_PERFUME_IMAGE = '/images/hero-perfume.jpg';
 
 /**
  * Normalizes an image path to work across:

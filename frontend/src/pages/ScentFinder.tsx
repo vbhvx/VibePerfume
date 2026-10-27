@@ -358,7 +358,7 @@ export const ScentFinder: React.FC = () => {
 
                     <div className="rec-card-actions">
                       <Link to={`/products/${p.id}`} className="btn-outline" style={{ flex: 1, textAlign: 'center' }}>
-                        Inspect Notes
+                        View details & notes
                       </Link>
                       {defVariant && (
                         <button 

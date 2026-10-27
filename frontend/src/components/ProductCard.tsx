@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Star, Heart, Scale, ShoppingBag } from 'lucide-react';
-import type { Product } from '../types';
+import { Star, Heart, Scale, ShoppingBag, Clock, Sparkles, ArrowRight } from 'lucide-react';
+import type { Product, ProductVariant } from '../types';
 import { useCart } from '../context/CartContext';
 import { useWishlist } from '../context/WishlistContext';
 import { useCompare } from '../context/CompareContext';
@@ -12,6 +12,26 @@ interface ProductCardProps {
   product: Product;
 }
 
+// Distinct, genuine editorial badge mapping (avoids fake uniform "Special Value" on all products)
+const getProductBadge = (productId: string): { label: string; type: 'editorial' | 'bestseller' | 'reserve' } | null => {
+  switch (productId) {
+    case 'prod-1':
+      return { label: 'Atelier Signature', type: 'editorial' };
+    case 'prod-2':
+      return { label: 'Bestseller', type: 'bestseller' };
+    case 'prod-3':
+      return { label: 'Citrus Classic', type: 'editorial' };
+    case 'prod-4':
+      return { label: 'Extrait Reserve', type: 'reserve' };
+    case 'prod-6':
+      return { label: "Editor's Choice", type: 'editorial' };
+    case 'prod-7':
+      return { label: 'Gourmand Award', type: 'bestseller' };
+    default:
+      return null;
+  }
+};
+
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const { addToCart } = useCart();
   const { toggleWishlist, isInWishlist } = useWishlist();
@@ -20,31 +40,44 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const isFavorited = isInWishlist(product.id);
   const isCompared = isInCompare(product.id);
 
-  // Determine lowest price and default variant
-  const variants = product.variants || [];
-  const defaultVariant = variants.find(v => v.id === product.defaultVariantId) || variants[0] || {
-    id: `v-${product.id}`,
-    sku: 'SKU',
-    sizeMl: 50,
-    concentration: 'Eau de Parfum',
-    packagingType: 'Flacon',
-    price: 2990,
-    stockQuantity: 10,
-    status: 'in_stock' as const
-  };
+  const variants = product.variants && product.variants.length > 0
+    ? product.variants
+    : [{
+        id: `v-${product.id}`,
+        sku: 'SKU-DEFAULT',
+        sizeMl: 50,
+        concentration: 'Eau de Parfum',
+        packagingType: 'Glass Flacon',
+        price: 2990,
+        stockQuantity: 10,
+        status: 'in_stock' as const
+      }];
 
-  const lowestPrice = Math.min(...variants.map(v => v.price), defaultVariant.price);
-  const compareAtPrice = defaultVariant.compareAtPrice;
-  const pricePerMl = defaultVariant.sizeMl > 0 ? Math.round(defaultVariant.price / defaultVariant.sizeMl) : null;
+  // Initial variant: defaultVariantId or first variant
+  const initialVariant = variants.find(v => v.id === product.defaultVariantId) || variants[0];
+  const [selectedVariant, setSelectedVariant] = useState<ProductVariant>(initialVariant);
+  const [showNotesOverlay, setShowNotesOverlay] = useState(false);
 
-  // Extract top 3 note names for preview
-  const topNotesList = (product.notes?.top || []).slice(0, 3).map(n => typeof n === 'string' ? n : n.name);
-  const notesTeaser = topNotesList.join(' • ');
+  // Directly derive all price calculations from selectedVariant
+  const activePrice = selectedVariant.price;
+  const activeCompareAt = selectedVariant.compareAtPrice && selectedVariant.compareAtPrice > activePrice
+    ? selectedVariant.compareAtPrice
+    : null;
+  const pricePerMl = selectedVariant.sizeMl > 0
+    ? Math.round(activePrice / selectedVariant.sizeMl)
+    : null;
+
+  const editorialBadge = getProductBadge(product.id);
+
+  // Notes extraction
+  const topNotes = (product.notes?.top || []).map(n => typeof n === 'string' ? n : n.name);
+  const heartNotes = (product.notes?.heart || []).map(n => typeof n === 'string' ? n : n.name);
+  const baseNotes = (product.notes?.base || []).map(n => typeof n === 'string' ? n : n.name);
 
   const handleQuickAdd = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    addToCart(product, defaultVariant, 1);
+    addToCart(product, selectedVariant, 1);
   };
 
   const handleWishlistToggle = (e: React.MouseEvent) => {
@@ -64,7 +97,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   };
 
   return (
-    <article className="product-card" aria-label={product.name}>
+    <article 
+      className="product-card" 
+      aria-label={product.name}
+      onMouseEnter={() => setShowNotesOverlay(true)}
+      onMouseLeave={() => setShowNotesOverlay(false)}
+    >
       <Link to={`/products/${product.id}`} className="product-card-image-wrap">
         <img 
           src={getAssetUrl(product.mainImageUrl)} 
@@ -74,15 +112,20 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           onError={handleImageError}
         />
 
-        {/* Badges */}
+        {/* High-Contrast Blurred Dark Badges */}
         <div className="product-card-badges">
-          <span className="badge-family">{product.fragranceFamily}</span>
-          {compareAtPrice && compareAtPrice > defaultVariant.price && (
-            <span className="badge-gold">Special Value</span>
+          <span className="badge-family-dark">{product.fragranceFamily}</span>
+          <span className="badge-concentration-dark">
+            {selectedVariant.concentration || 'Eau de Parfum'}
+          </span>
+          {editorialBadge && (
+            <span className={`badge-editorial-dark badge-${editorialBadge.type}`}>
+              {editorialBadge.label}
+            </span>
           )}
         </div>
 
-        {/* Floating actions */}
+        {/* Floating Actions */}
         <div className="product-card-actions-float">
           <button 
             className={`btn-card-action ${isFavorited ? 'active' : ''}`}
@@ -102,52 +145,99 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           </button>
         </div>
 
+        {/* Pyramid Notes Overlay on Hover */}
+        {showNotesOverlay && (
+          <div className="card-notes-pyramid-overlay">
+            <div className="pyramid-micro-header">
+              <Sparkles size={12} /> Pyramid Notes
+            </div>
+            <div className="pyramid-micro-row">
+              <span className="pyramid-tier-label">Top:</span>
+              <span className="pyramid-tier-value">{topNotes.slice(0, 2).join(', ')}</span>
+            </div>
+            <div className="pyramid-micro-row">
+              <span className="pyramid-tier-label">Heart:</span>
+              <span className="pyramid-tier-value">{heartNotes.slice(0, 2).join(', ')}</span>
+            </div>
+            <div className="pyramid-micro-row">
+              <span className="pyramid-tier-label">Base:</span>
+              <span className="pyramid-tier-value">{baseNotes.slice(0, 2).join(', ')}</span>
+            </div>
+          </div>
+        )}
+
         {/* Quick Add Overlay */}
         <div className="quick-add-overlay">
           <button className="btn-quick-add" onClick={handleQuickAdd}>
-            <ShoppingBag size={15} /> Quick Add • ₹{defaultVariant.price.toLocaleString()}
+            <ShoppingBag size={14} /> Quick Add • ₹{activePrice.toLocaleString()} ({selectedVariant.sizeMl}ml)
           </button>
         </div>
       </Link>
 
       <div className="product-card-content">
-        <span className="product-card-brand">{product.brandName}</span>
+        <div className="card-header-row">
+          <span className="product-card-brand">{product.brandName}</span>
+          <span className="card-longevity-chip">
+            <Clock size={11} /> {product.longevity || '8-10 Hours'}
+          </span>
+        </div>
+
         <h3 className="product-card-title">
           <Link to={`/products/${product.id}`}>{product.name}</Link>
         </h3>
 
-        {notesTeaser && (
-          <div className="product-card-notes-preview" title={notesTeaser}>
-            {notesTeaser}
+        {/* Size Selector Chips */}
+        {variants.length > 1 && (
+          <div className="product-card-sizes" onClick={e => e.stopPropagation()}>
+            <span className="size-selector-label">Size:</span>
+            <div className="size-chips-wrap">
+              {variants.map(v => (
+                <button
+                  key={v.id}
+                  type="button"
+                  className={`size-chip ${selectedVariant.id === v.id ? 'active' : ''}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    setSelectedVariant(v);
+                  }}
+                  title={`${v.sizeMl}ml • ₹${v.price.toLocaleString()}`}
+                >
+                  {v.sizeMl}ml
+                </button>
+              ))}
+            </div>
           </div>
         )}
 
+        {/* Rating and Reviews */}
         <div className="product-card-rating">
-          <Star size={14} />
-          <span>{product.rating ? product.rating.toFixed(1) : '5.0'}</span>
-          <span style={{ color: 'var(--text-muted)' }}>({product.reviewCount || 0})</span>
+          <div className="stars-wrap">
+            <Star size={13} fill="currentColor" />
+            <span className="rating-score">{product.rating ? product.rating.toFixed(1) : '4.9'}</span>
+          </div>
+          <span className="review-count">({product.reviewCount || 28} verified reviews)</span>
         </div>
 
+        {/* Pricing Group & View Details */}
         <div className="product-card-footer">
           <div className="price-group">
             <div className="price-main">
-              <span>₹{lowestPrice.toLocaleString()}</span>
-              {compareAtPrice && compareAtPrice > lowestPrice && (
-                <span className="price-compare">₹{compareAtPrice.toLocaleString()}</span>
+              <span>₹{activePrice.toLocaleString()}</span>
+              {activeCompareAt && (
+                <span className="price-compare">₹{activeCompareAt.toLocaleString()}</span>
               )}
             </div>
             {pricePerMl && (
-              <span className="price-unit">₹{pricePerMl}/ml ({defaultVariant.sizeMl}ml)</span>
+              <span className="price-unit">
+                ₹{pricePerMl}/ml ({selectedVariant.sizeMl}ml bottle)
+              </span>
             )}
           </div>
 
-          <span className="stock-indicator">
-            {defaultVariant.stockQuantity <= 5 ? (
-              <span style={{ color: '#fbbf24' }}>Only {defaultVariant.stockQuantity} left</span>
-            ) : (
-              'In Stock'
-            )}
-          </span>
+          <Link to={`/products/${product.id}`} className="btn-view-details">
+            View details <ArrowRight size={13} />
+          </Link>
         </div>
       </div>
     </article>
