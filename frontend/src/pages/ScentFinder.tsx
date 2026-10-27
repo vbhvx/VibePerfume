@@ -12,6 +12,7 @@ import { toast } from 'react-hot-toast';
 import { getScentRecommendations } from '../api/products';
 import type { ScentFinderRecommendation } from '../types';
 import { useCart } from '../context/CartContext';
+import { getAssetUrl, handleImageError } from '../utils/imageUrl';
 import './ScentFinder.css';
 
 export const ScentFinder: React.FC = () => {
@@ -328,7 +329,12 @@ export const ScentFinder: React.FC = () => {
                     </span>
 
                     <div className="rec-card-top">
-                      <img src={p.mainImageUrl} alt={p.name} className="rec-thumb" />
+                      <img 
+                        src={getAssetUrl(p.mainImageUrl)} 
+                        alt={p.name} 
+                        className="rec-thumb" 
+                        onError={handleImageError}
+                      />
                       <div className="rec-title-wrap">
                         <span className="rec-brand">{p.brandName} • {p.fragranceFamily}</span>
                         <h3>{p.name}</h3>

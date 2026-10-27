@@ -22,6 +22,7 @@ import { useCart } from '../context/CartContext';
 import { useWishlist } from '../context/WishlistContext';
 import { useCompare } from '../context/CompareContext';
 import ProductCard from '../components/ProductCard';
+import { getAssetUrl, handleImageError } from '../utils/imageUrl';
 import './ProductDetail.css';
 
 export const ProductDetail: React.FC = () => {
@@ -202,7 +203,12 @@ export const ProductDetail: React.FC = () => {
           {/* Gallery Column */}
           <div className="pdp-gallery-wrap">
             <div className="pdp-main-image-box">
-              <img src={selectedImage || product.mainImageUrl} alt={product.name} className="pdp-main-image" />
+              <img 
+                src={getAssetUrl(selectedImage || product.mainImageUrl)} 
+                alt={product.name} 
+                className="pdp-main-image" 
+                onError={handleImageError}
+              />
             </div>
 
             {product.galleryImages && product.galleryImages.length > 1 && (
@@ -214,7 +220,12 @@ export const ProductDetail: React.FC = () => {
                     onClick={() => setSelectedImage(imgUrl)}
                     aria-label={`View photo ${i + 1}`}
                   >
-                    <img src={imgUrl} alt={`Thumbnail ${i + 1}`} className="pdp-thumb-img" />
+                    <img 
+                      src={getAssetUrl(imgUrl)} 
+                      alt={`Thumbnail ${i + 1}`} 
+                      className="pdp-thumb-img" 
+                      onError={handleImageError}
+                    />
                   </button>
                 ))}
               </div>

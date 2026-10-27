@@ -6,6 +6,7 @@ import type { AiSommelierProductMatch } from '../types';
 import { useCart } from '../context/CartContext';
 import { useCompare } from '../context/CompareContext';
 import toast from 'react-hot-toast';
+import { getAssetUrl, handleImageError } from '../utils/imageUrl';
 import './AiSommelier.css';
 
 interface ChatMessage {
@@ -227,9 +228,10 @@ export const AiSommelier: React.FC = () => {
                               <div className="card-body">
                                 <Link to={`/products/${product.id}`} className="card-thumb-wrap">
                                   <img 
-                                    src={product.mainImageUrl} 
+                                    src={getAssetUrl(product.mainImageUrl)} 
                                     alt={product.name} 
                                     className="card-thumb" 
+                                    onError={handleImageError}
                                   />
                                 </Link>
 

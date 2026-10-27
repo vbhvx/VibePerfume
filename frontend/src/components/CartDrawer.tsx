@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { X, Trash2, ShoppingBag, Sparkles, ArrowRight } from 'lucide-react';
 import { useCart } from '../context/CartContext';
+import { getAssetUrl, handleImageError } from '../utils/imageUrl';
 import './CartDrawer.css';
 
 export const CartDrawer: React.FC = () => {
@@ -90,7 +91,12 @@ export const CartDrawer: React.FC = () => {
           ) : (
             validatedCart.items.map(item => (
               <div key={item.variantId} className="cart-item-card">
-                <img src={item.imageUrl} alt={item.productName} className="cart-item-image" />
+                <img 
+                  src={getAssetUrl(item.imageUrl)} 
+                  alt={item.productName} 
+                  className="cart-item-image" 
+                  onError={handleImageError}
+                />
                 <div className="cart-item-details">
                   <div>
                     <span className="cart-item-brand">{item.brandName}</span>

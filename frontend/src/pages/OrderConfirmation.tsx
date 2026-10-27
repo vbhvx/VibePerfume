@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { Check, Sparkles, ArrowRight } from 'lucide-react';
 import { fetchOrderByNumber } from '../api/products';
 import type { Order } from '../types';
+import { getAssetUrl, handleImageError } from '../utils/imageUrl';
 import './OrderConfirmation.css';
 
 export const OrderConfirmation: React.FC = () => {
@@ -110,7 +111,12 @@ export const OrderConfirmation: React.FC = () => {
               {order.items.map(item => (
                 <tr key={item.variantId}>
                   <td style={{ width: '60px' }}>
-                    <img src={item.imageUrl} alt={item.productName} style={{ width: '48px', height: '56px', objectFit: 'cover', borderRadius: '4px', background: '#111' }} />
+                    <img 
+                      src={getAssetUrl(item.imageUrl)} 
+                      alt={item.productName} 
+                      style={{ width: '48px', height: '56px', objectFit: 'cover', borderRadius: '4px', background: '#111' }} 
+                      onError={handleImageError}
+                    />
                   </td>
                   <td>
                     <div style={{ fontWeight: 600, color: '#fff' }}>{item.productName}</div>

@@ -5,6 +5,7 @@ import { consultAiSommelier } from '../api/products';
 import type { AiSommelierProductMatch } from '../types';
 import { useCart } from '../context/CartContext';
 import toast from 'react-hot-toast';
+import { getAssetUrl, handleImageError } from '../utils/imageUrl';
 import './AiSommelierWidget.css';
 
 interface WidgetMessage {
@@ -139,7 +140,12 @@ export const AiSommelierWidget: React.FC = () => {
                     <div className="widget-recs-mini">
                       {m.recommendations.slice(0, 2).map(prod => (
                         <div key={prod.id} className="widget-rec-item">
-                          <img src={prod.mainImageUrl} alt={prod.name} className="rec-mini-img" />
+                          <img 
+                            src={getAssetUrl(prod.mainImageUrl)} 
+                            alt={prod.name} 
+                            className="rec-mini-img" 
+                            onError={handleImageError}
+                          />
                           <div className="rec-mini-info">
                             <span className="rec-mini-badge">✨ {prod.matchPercentage}% Match</span>
                             <h5 className="rec-mini-title">{prod.name}</h5>

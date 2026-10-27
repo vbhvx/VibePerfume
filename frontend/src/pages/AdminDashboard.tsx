@@ -16,6 +16,7 @@ import {
   fetchProducts 
 } from '../api/products';
 import type { Order, Product, Review } from '../types';
+import { getAssetUrl, handleImageError } from '../utils/imageUrl';
 import './AdminDashboard.css';
 
 export const AdminDashboard: React.FC = () => {
@@ -175,7 +176,12 @@ export const AdminDashboard: React.FC = () => {
                   <tr key={p.id}>
                     <td>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
-                        <img src={p.mainImageUrl} alt={p.name} style={{ width: '42px', height: '50px', objectFit: 'cover', borderRadius: '4px', background: '#111' }} />
+                        <img 
+                          src={getAssetUrl(p.mainImageUrl)} 
+                          alt={p.name} 
+                          style={{ width: '42px', height: '50px', objectFit: 'cover', borderRadius: '4px', background: '#111' }} 
+                          onError={handleImageError}
+                        />
                         <div>
                           <div style={{ fontWeight: 600, color: '#fff' }}>{p.name}</div>
                           <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Rating: {p.rating} ★</span>

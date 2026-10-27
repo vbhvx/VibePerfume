@@ -11,6 +11,7 @@ import {
 import { toast } from 'react-hot-toast';
 import { useCart } from '../context/CartContext';
 import { createCheckoutOrder } from '../api/products';
+import { getAssetUrl, handleImageError } from '../utils/imageUrl';
 import './Checkout.css';
 
 export const Checkout: React.FC = () => {
@@ -380,7 +381,12 @@ export const Checkout: React.FC = () => {
             <div className="checkout-items-list">
               {validatedCart?.items?.map(it => (
                 <div key={it.variantId} className="checkout-mini-item">
-                  <img src={it.imageUrl} alt={it.productName} className="checkout-mini-img" />
+                  <img 
+                    src={getAssetUrl(it.imageUrl)} 
+                    alt={it.productName} 
+                    className="checkout-mini-img" 
+                    onError={handleImageError}
+                  />
                   <div className="checkout-mini-info">
                     <h5 className="checkout-mini-title">{it.productName}</h5>
                     <div className="checkout-mini-meta">

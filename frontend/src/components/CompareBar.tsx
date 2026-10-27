@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowRight, X, Scale } from 'lucide-react';
 import { useCompare } from '../context/CompareContext';
+import { getAssetUrl, handleImageError } from '../utils/imageUrl';
 import './CompareBar.css';
 
 export const CompareBar: React.FC = () => {
@@ -21,7 +22,12 @@ export const CompareBar: React.FC = () => {
         <div className="compare-thumbs-list">
           {compareProducts.map(p => (
             <div key={p.id} className="compare-thumb-wrapper" title={`${p.name} - Click to remove`}>
-              <img src={p.mainImageUrl} alt={p.name} className="compare-thumb-img" />
+              <img 
+                src={getAssetUrl(p.mainImageUrl)} 
+                alt={p.name} 
+                className="compare-thumb-img" 
+                onError={handleImageError}
+              />
               <button 
                 className="compare-thumb-remove" 
                 onClick={() => removeFromCompare(p.id)}

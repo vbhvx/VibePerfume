@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { X, Star, ShoppingBag, ArrowRight, RotateCcw, Scale } from 'lucide-react';
 import { useCompare } from '../context/CompareContext';
 import { useCart } from '../context/CartContext';
+import { getAssetUrl, handleImageError } from '../utils/imageUrl';
 import './Compare.css';
 
 export const Compare: React.FC = () => {
@@ -63,7 +64,12 @@ export const Compare: React.FC = () => {
                         <X size={16} />
                       </button>
                       <Link to={`/products/${p.id}`}>
-                        <img src={p.mainImageUrl} alt={p.name} className="compare-flacon-img" />
+                        <img 
+                          src={getAssetUrl(p.mainImageUrl)} 
+                          alt={p.name} 
+                          className="compare-flacon-img" 
+                          onError={handleImageError}
+                        />
                       </Link>
                       <span className="compare-flacon-brand">{p.brandName}</span>
                       <h4 className="compare-flacon-title">

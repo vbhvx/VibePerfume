@@ -5,6 +5,7 @@ import type { Product } from '../types';
 import { useCart } from '../context/CartContext';
 import { useWishlist } from '../context/WishlistContext';
 import { useCompare } from '../context/CompareContext';
+import { getAssetUrl, handleImageError } from '../utils/imageUrl';
 import './ProductCard.css';
 
 interface ProductCardProps {
@@ -66,10 +67,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     <article className="product-card" aria-label={product.name}>
       <Link to={`/products/${product.id}`} className="product-card-image-wrap">
         <img 
-          src={product.mainImageUrl} 
+          src={getAssetUrl(product.mainImageUrl)} 
           alt={product.name} 
           className="product-card-image"
           loading="lazy" 
+          onError={handleImageError}
         />
 
         {/* Badges */}

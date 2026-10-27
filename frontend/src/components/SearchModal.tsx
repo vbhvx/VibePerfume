@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Search, X, ArrowRight, Sparkles } from 'lucide-react';
 import { fetchProducts } from '../api/products';
 import type { Product } from '../types';
+import { getAssetUrl, handleImageError } from '../utils/imageUrl';
 import './SearchModal.css';
 
 interface SearchModalProps {
@@ -126,7 +127,12 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
                       role="button"
                       tabIndex={0}
                     >
-                      <img src={product.mainImageUrl} alt={product.name} className="search-result-img" />
+                      <img 
+                        src={getAssetUrl(product.mainImageUrl)} 
+                        alt={product.name} 
+                        className="search-result-img" 
+                        onError={handleImageError}
+                      />
                       <div className="search-result-info">
                         <div className="search-result-brand">{product.brandName} • {product.fragranceFamily}</div>
                         <div className="search-result-name">{product.name}</div>

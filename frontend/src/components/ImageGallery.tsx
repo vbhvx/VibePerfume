@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
 import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
+import { getAssetUrl, handleImageError } from '../utils/imageUrl';
 import './ImageGallery.css';
 
 interface ImageGalleryProps {
@@ -18,7 +19,12 @@ const ImageGallery = ({ images }: ImageGalleryProps) => {
   return (
     <div className="image-gallery">
       <div className="main-image-container">
-        <img src={images[activeIdx]} alt="Product" className="main-image" />
+        <img 
+          src={getAssetUrl(images[activeIdx])} 
+          alt="Product" 
+          className="main-image" 
+          onError={handleImageError}
+        />
         
         <button className="gallery-nav prev" onClick={prevImg}><ChevronLeft size={24} /></button>
         <button className="gallery-nav next" onClick={nextImg}><ChevronRight size={24} /></button>
@@ -35,7 +41,11 @@ const ImageGallery = ({ images }: ImageGalleryProps) => {
             className={`thumbnail ${activeIdx === idx ? 'active' : ''}`}
             onClick={() => setActiveIdx(idx)}
           >
-            <img src={img} alt={`Thumbnail ${idx + 1}`} />
+            <img 
+              src={getAssetUrl(img)} 
+              alt={`Thumbnail ${idx + 1}`} 
+              onError={handleImageError}
+            />
           </div>
         ))}
       </div>
@@ -43,7 +53,7 @@ const ImageGallery = ({ images }: ImageGalleryProps) => {
       <Lightbox
         open={isOpen}
         close={() => setIsOpen(false)}
-        slides={images.map(src => ({ src }))}
+        slides={images.map(src => ({ src: getAssetUrl(src) }))}
         index={activeIdx}
       />
     </div>
