@@ -2,7 +2,15 @@
  * Authentication & Authorization Middleware for Atelier Administration
  */
 export const requireAdmin = (req, res, next) => {
-  const configuredKey = process.env.ADMIN_API_KEY || 'vibe-atelier-admin-key-2026';
+  const configuredKey = process.env.ADMIN_API_KEY
+    || (process.env.NODE_ENV === 'production' ? null : 'vibe-atelier-admin-key-2026');
+
+  if (!configuredKey) {
+    return res.status(500).json({
+      success: false,
+      message: 'Server misconfigured: ADMIN_API_KEY is not set.'
+    });
+  }
   
   // Accept key from header 'x-admin-key' or Authorization 'Bearer <key>'
   const headerKey = req.headers['x-admin-key'];
